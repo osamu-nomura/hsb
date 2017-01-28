@@ -17,7 +17,7 @@ namespace hsb.Extensions.Tests
     {
         #region - SetYearTest
         /// <summary>
-        /// Test for SetYear
+        /// Test of SetYear
         /// </summary>
         [TestMethod()]
         public void SetYearTest()
@@ -45,7 +45,7 @@ namespace hsb.Extensions.Tests
 
         #region - SetMonthTest
         /// <summary>
-        /// Test for SetMonth
+        /// Test of SetMonth
         /// </summary>
         [TestMethod()]
         public void SetMonthTest()
@@ -73,7 +73,7 @@ namespace hsb.Extensions.Tests
 
         #region - SetDayTest
         /// <summary>
-        /// Test for SetDay
+        /// Test of SetDay
         /// </summary>
         [TestMethod()]
         public void SetDayTest()
@@ -101,7 +101,7 @@ namespace hsb.Extensions.Tests
 
         #region - SafeSetYearTest
         /// <summary>
-        /// Test for SafeSetYear
+        /// Test of SafeSetYear
         /// </summary>
         [TestMethod()]
         public void SafeSetYearTest()
@@ -122,7 +122,7 @@ namespace hsb.Extensions.Tests
 
         #region - SafeSetMonthTest
         /// <summary>
-        /// Test for SafeSetMonth
+        /// Test of SafeSetMonth
         /// </summary>
         [TestMethod()]
         public void SafeSetMonthTest()
@@ -143,7 +143,7 @@ namespace hsb.Extensions.Tests
 
         #region - SafeSetDayTest
         /// <summary>
-        /// Test for SafeSetDay
+        /// Test of SafeSetDay
         /// </summary>
         [TestMethod()]
         public void SafeSetDayTest()
@@ -164,7 +164,7 @@ namespace hsb.Extensions.Tests
 
         #region - IsLeapYearTest
         /// <summary>
-        /// Test for IsLEapYear
+        /// Test of IsLEapYear
         /// </summary>
         [TestMethod()]
         public void IsLeapYearTest()
@@ -182,7 +182,7 @@ namespace hsb.Extensions.Tests
 
         #region - BeginOfYearTest
         /// <summary>
-        /// Test for BeginOfYear
+        /// Test of BeginOfYear
         /// </summary>
         [TestMethod()]
         public void BeginOfYearTest()
@@ -195,7 +195,7 @@ namespace hsb.Extensions.Tests
 
         #region - EndOfYearTest
         /// <summary>
-        /// Test for EndOfYear
+        /// Test of EndOfYear
         /// </summary>
         [TestMethod()]
         public void EndOfYearTest()
@@ -208,7 +208,7 @@ namespace hsb.Extensions.Tests
 
         #region - BeginOfMonthTest
         /// <summary>
-        /// Test for BeginOfMonth
+        /// Test of BeginOfMonth
         /// </summary>
         [TestMethod()]
         public void BeginOfMonthTest()
@@ -221,7 +221,7 @@ namespace hsb.Extensions.Tests
 
         #region - EndOfMonthTest
         /// <summary>
-        /// Test for EndOfMonth
+        /// Test of EndOfMonth
         /// </summary>
         [TestMethod()]
         public void EndOfMonthTest()
@@ -229,6 +229,185 @@ namespace hsb.Extensions.Tests
             var dt = new DateTime(2017, 1, 28);
             var expected = new DateTime(2017, 1, 31);
             Assert.AreEqual(expected, dt.EndOfMonth());
+        }
+        #endregion
+
+        #region - SundayOfWeekTest
+        /// <summary>
+        /// Test of SundayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void SundayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 22);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.SundayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - MondayOfWeekTest 
+        /// <summary>
+        /// Test of MondayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void MondayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 23),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 23);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.MondayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - TuesdayOfWeekTest
+        /// <summary>
+        /// Test of TuesdayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void TuesdayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 24),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 24);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.TuesdayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - WednesdayOfWeekTest
+        /// <summary>
+        /// Test of WednesdayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void WednesdayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 25),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 25);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.WednesdayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - ThursdayOfWeekTest
+        /// <summary>
+        /// Test of ThursdayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void ThursdayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 26),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 26);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.ThursdayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - FridayOfWeekTest
+        /// <summary>
+        /// Test of FridayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void FridayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 27),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 27);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.FridayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - SaturdayOfWeekTest 
+        /// <summary>
+        /// Test of SaturdayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void SaturdayOfWeekTest()
+        {
+            var dts = new DateTime[] {
+                new DateTime(2017, 1, 22),
+                new DateTime(2017, 1, 28)
+            };
+            var expected = new DateTime(2017, 1, 28);
+
+            foreach (var dt in dts)
+            {
+                Assert.AreEqual(expected, dt.SaturdayOfWeek());
+            }
+        }
+        #endregion
+
+        #region - DropTimeTest
+        /// <summary>
+        /// Test of DropTime
+        /// </summary>
+        [TestMethod()]
+        public void DropTimeTest()
+        {
+            var dt = new DateTime(2017, 1, 28, 11, 22, 33, 44);
+            var expected = new DateTime(2017, 1, 28);
+            Assert.AreEqual(expected, dt.DropTime());
+        }
+        #endregion
+
+        #region - DropDateTest
+        /// <summary>
+        /// Test of DropDate
+        /// </summary>
+        [TestMethod()]
+        public void DropDateTest()
+        {
+            DateTime dt, expected;
+
+            // Case 1
+            dt = new DateTime(2017, 1, 28, 11, 22, 33, 44);
+            expected = new DateTime(1, 1, 1, 11, 22, 33, 44);
+            Assert.AreEqual(expected, dt.DropDate());
+
+            // Case 2
+            dt = new DateTime(2017, 1, 28, 11, 22, 33, 44);
+            expected = new DateTime(2001, 1, 1, 11, 22, 33, 44);
+            Assert.AreEqual(expected, dt.DropDate(new DateTime(2001,1,1)));
         }
         #endregion
     }

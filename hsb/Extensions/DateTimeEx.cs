@@ -158,6 +158,137 @@ namespace hsb.Extensions
         }
         #endregion
 
+        #region - SundayOfWeek : 対象日を含む週の日曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の日曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の日曜日</returns>
+        public static DateTime SundayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Sunday)
+                return dt.AddDays((int)dt.DayOfWeek * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - MondayOfWeek : 対象日を含む週の月曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の月曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の月曜日</returns>
+        public static DateTime MondayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Monday)
+                return dt.AddDays(((int)dt.DayOfWeek - 1) * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - TuesdayOfWeek : 対象日を含む週の火曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の火曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の火曜日</returns>
+        public static DateTime TuesdayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Tuesday)
+                return dt.AddDays(((int)dt.DayOfWeek - 2) * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - WednesdayOfWeek : 対象日を含む週の水曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の水曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の水曜日</returns>
+        public static DateTime WednesdayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Wednesday)
+                return dt.AddDays(((int)dt.DayOfWeek - 3) * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - ThursdayOfWeek : 対象日を含む週の木曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の木曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の木曜日</returns>
+        public static DateTime ThursdayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Thursday)
+                return dt.AddDays(((int)dt.DayOfWeek - 4) * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - FridayOfWeek : 対象日を含む週の金曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の金曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の金曜日</returns>
+        public static DateTime FridayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Friday)
+                return dt.AddDays(((int)dt.DayOfWeek - 5) * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - SaturdayOfWeek : 対象日を含む週の土曜日を返す。
+        /// <summary>
+        /// 対象日を含む週の土曜日を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <returns>対象日を含む週の土曜日</returns>
+        public static DateTime SaturdayOfWeek(this DateTime dt)
+        {
+            if (dt.DayOfWeek != DayOfWeek.Saturday)
+                return dt.AddDays(((int)dt.DayOfWeek - 6) * -1);
+            else
+                return dt;
+        }
+        #endregion
+
+        #region - DropTime : 日時より時刻を落とす
+        /// <summary>
+        /// 日時より時刻を落とす
+        /// </summary>
+        /// <param name="dt">this 日時</param>
+        /// <returns>対象日の0:00:00</returns>
+        public static DateTime DropTime(this DateTime dt)
+        {
+            return new DateTime(dt.Year, dt.Month, dt.Day);
+        }
+        #endregion
+
+        #region - DropDate : 日時より日付を落とす
+        /// <summary>
+        /// 日時より日付を落とす
+        /// </summary>
+        /// <param name="dt">this 日時</param>
+        /// <param name="baseDate">DateTime? : 基準日</param>
+        /// <returns>対象日の時間のみ</returns>
+        public static DateTime DropDate(this DateTime dt, DateTime? baseDate = null)
+        {
+            baseDate = baseDate ?? DateTime.MinValue;
+            return new DateTime(baseDate.Value.Year, baseDate.Value.Month, baseDate.Value.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+        }
+        #endregion
+
         #endregion
     }
     #endregion
