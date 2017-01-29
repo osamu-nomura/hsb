@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using hsb.Types;
 using hsb.Extensions;
 using System;
 using System.Collections.Generic;
@@ -407,9 +408,50 @@ namespace hsb.Extensions.Tests
             // Case 2
             dt = new DateTime(2017, 1, 28, 11, 22, 33, 44);
             expected = new DateTime(2001, 1, 1, 11, 22, 33, 44);
-            Assert.AreEqual(expected, dt.DropDate(new DateTime(2001,1,1)));
+            Assert.AreEqual(expected, dt.DropDate(new DateTime(2001, 1, 1)));
         }
         #endregion
+
+        #region - ToTest
+        /// <summary>
+        /// Test of To
+        /// </summary>
+        [TestMethod()]
+        public void ToTest()
+        {
+            var expecteds = new DateTime[]
+            {
+                new DateTime(2017, 2, 1),
+                new DateTime(2017, 2, 2),
+                new DateTime(2017, 2, 3),
+                new DateTime(2017, 2, 4),
+                new DateTime(2017, 2, 5)
+            };
+
+            // Case 1
+            var i = 0;
+            foreach (var dt in new DateTime(2017, 2, 1).To(new DateTime(2017, 2, 5)))
+            {
+                Assert.AreEqual(expecteds[i++], dt);
+            }
+            Assert.AreEqual(5, i);
+
+            // Case 2
+            i = 0;
+            foreach (var dt in new DateTime(2017, 2, 1).To(4, DatePart.Day))
+            {
+                Assert.AreEqual(expecteds[i++], dt);
+            }
+            Assert.AreEqual(5, i);
+        }
+        #endregion
+
+        [TestMethod()]
+        public void AddTest()
+        {
+            //TODO テストを実行する
+            Assert.Fail();
+        }
     }
     #endregion
 }

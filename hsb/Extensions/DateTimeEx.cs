@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using hsb.Types;
+using hsb.Classes;
 
 namespace hsb.Extensions
 {
@@ -286,6 +288,62 @@ namespace hsb.Extensions
         {
             baseDate = baseDate ?? DateTime.MinValue;
             return new DateTime(baseDate.Value.Year, baseDate.Value.Month, baseDate.Value.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+        }
+        #endregion
+
+        #region - Add : 対象日に指定した単位で加算した日付を返す。
+        /// <summary>
+        /// 対象日に指定した単位で加算した日付を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <param name="span">加算値</param>
+        /// <param name="spanUnit">加算する単位</param>
+        /// <returns> 対象日に指定した単位で加算した日付</returns>
+        public static DateTime Add(this DateTime dt, int span, DatePart spanUnit)
+        {
+            switch (spanUnit)
+            {
+                case DatePart.Year: return dt.AddYears(span);
+                case DatePart.Month: return dt.AddMonths(span);
+                case DatePart.Day: return dt.AddDays(span);
+                case DatePart.Hour: return dt.AddHours(span);
+                case DatePart.Minute: return dt.AddMinutes(span);
+                case DatePart.Second: return dt.AddSeconds(span);
+                case DatePart.Milisecond: return dt.AddMilliseconds(span);
+                default: throw new ArgumentOutOfRangeException("Invalid spanUnit");
+            }
+        }
+        #endregion
+
+        #region - To : 対象日より指定日までの日付範囲を返す。
+        /// <summary>
+        /// 対象日より指定日までの日付範囲を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <param name="toDate">指定日</param>
+        /// <param name="step">ステップ数</param>
+        /// <param name="stepUnit"ステップ単位></param>
+        /// <returns>対象日より指定日までの日付範囲</returns>
+        public static DateRange To(this DateTime dt, DateTime toDate, int step = 1, DatePart stepUnit = DatePart.Day)
+        {
+            return new DateRange(dt, toDate, step, stepUnit);
+        }
+        #endregion
+
+        #region - To : 対象日より指定した単位で加算した日付までの日付範囲を返す。
+        /// <summary>
+        /// 対象日より指定日までの日付範囲を返す。
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <param name="span">加算値</param>
+        /// <param name="spanUnit">加算単位</param>
+        /// <param name="step">ステップ数</param>
+        /// <param name="stepUnit">ステップ単位</param>
+        /// <returns>対象日より指定した単位で加算した日付までの日付範囲</returns>
+        public static DateRange To(this DateTime dt, int span, DatePart spanUnit, int step = 1, DatePart stepUnit = DatePart.Day)
+        {
+            var toDate = dt.Add(span, spanUnit);
+            return new DateRange(dt, toDate, step, stepUnit);
         }
         #endregion
 

@@ -10,6 +10,6 @@ namespace hsb.Types
     /// <summary>
     /// 日時部位
     /// </summary>
-    public enum DatePart { Year, Month, Day, Hour, Minute, Second, Millsecond }
+    public enum DatePart { Year, Month, Day, Hour, Minute, Second, Milisecond }
     #endregion
 }

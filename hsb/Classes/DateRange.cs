@@ -38,11 +38,11 @@ namespace hsb.Classes
         public int Step { get; set; }
         #endregion
 
-        #region - StepLevel : 列挙時のステップ単位
+        #region - StepUnit : 列挙時のステップ単位
         /// <summary>
         /// 列挙時のステップ単位
         /// </summary>
-        public DatePart StepLevel { get; set; }
+        public DatePart StepUnit { get; set; }
         #endregion
 
         #region - DisplayFormat : ToString() 時の書式設定
@@ -75,21 +75,6 @@ namespace hsb.Classes
         }
         #endregion
 
-        #region - Days : 範囲の日数を返す
-        /// <summary>
-        /// 範囲の日数を返す - Calculate
-        /// </summary>
-        public int Days
-        {
-            get
-            {
-                var f = (RangeFrom ?? DateTime.MinValue).DropTime();
-                var t = (RangeTo ?? DateTime.MaxValue).AddDays(1).DropTime();
-                return (t - f).Days;
-            }
-        }
-        #endregion
-
         #endregion
 
         #region ■ Constructor
@@ -103,7 +88,7 @@ namespace hsb.Classes
             RangeFrom = null;
             RangeTo = null;
             Step = 1;
-            StepLevel = DatePart.Day;
+            StepUnit = DatePart.Day;
             DisplayFormat = @"{0}～{1}";
         }
         #endregion
@@ -115,41 +100,19 @@ namespace hsb.Classes
         /// <param name="from">開始日</param>
         /// <param name="to">終了日</param>
         /// <param name="step">ステップ数</param>
-        /// <param name="stepLevel">ステップ単位</param>
-        public DateRange(DateTime? from, DateTime? to, int step = 1, DatePart stepLevel = DatePart.Day) : base()
+        /// <param name="stepUnit">ステップ単位</param>
+        public DateRange(DateTime? from, DateTime? to, int step = 1, DatePart stepUnit = DatePart.Day) : this()
         {
             RangeFrom = from;
             RangeTo = to;
             Step = step;
-            StepLevel = stepLevel;
+            StepUnit = stepUnit;
         }
         #endregion
 
         #endregion
 
         #region ■ Private Methods
-
-        #region - IncrementDate : 日付をインクリメントする
-        /// <summary>
-        /// 日付をインクリメントする
-        /// </summary>
-        /// <param name="dt">日付</param>
-        /// <returns>ステップ設定に基づき増減された日付</returns>
-        private DateTime IncrementDate(DateTime dt)
-        {
-            switch (StepLevel)
-            {
-                case DatePart.Year: return dt.AddYears(Step);
-                case DatePart.Month: return dt.AddMonths(Step);
-                case DatePart.Day: return dt.AddDays(Step);
-                case DatePart.Hour: return dt.AddHours(Step);
-                case DatePart.Minute: return dt.AddMinutes(Step);
-                case DatePart.Second: return dt.AddSeconds(Step);
-                case DatePart.Millsecond: return dt.AddMilliseconds(Step);
-                default: throw new ApplicationException("Invalid StepLevel Value!!");
-            }
-        }
-        #endregion
 
         #endregion
 
@@ -164,7 +127,10 @@ namespace hsb.Classes
         {
             if (!IsEmpty)
             {
-                for (var dt = (RangeFrom ?? DateTime.MinValue); dt <= (RangeTo ?? DateTime.MaxValue); dt = IncrementDate(dt))
+                var i = 1;
+                var rangeFrom = RangeFrom ?? DateTime.MinValue;
+                var rangeTo = RangeTo ?? DateTime.MaxValue;
+                for (var dt = rangeFrom; dt <= rangeTo; dt = rangeFrom.Add(Step * i++, StepUnit))
                     yield return dt;
             }
         }
@@ -180,7 +146,10 @@ namespace hsb.Classes
         {
             if (!IsEmpty)
             {
-                for (var dt = (RangeFrom ?? DateTime.MinValue); dt <= (RangeTo ?? DateTime.MaxValue); dt = IncrementDate(dt))
+                var i = 1;
+                var rangeFrom = RangeFrom ?? DateTime.MinValue;
+                var rangeTo = RangeTo ?? DateTime.MaxValue;
+                for (var dt = rangeFrom; dt <= rangeTo; dt = rangeFrom.Add(Step * i++, StepUnit))
                     yield return dt;
             }
         }
