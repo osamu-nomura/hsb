@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Classes\DateRangeTests.cs" />
     <Compile Include="Extensions\DateTimeExTests.cs" />
+    <Compile Include="Extensions\StringExTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

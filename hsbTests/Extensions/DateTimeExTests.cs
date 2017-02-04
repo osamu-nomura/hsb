@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using hsb.Types;
-using hsb.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace hsb.Extensions.Tests
 {
@@ -446,12 +441,22 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
+        #region - AddTest
+        /// <summary>
+        /// Test of Add
+        /// </summary>
         [TestMethod()]
         public void AddTest()
         {
-            //TODO テストを実行する
-            Assert.Fail();
+            Assert.AreEqual(new DateTime(2018, 2, 4), new DateTime(2017, 2, 4).Add(1, DatePart.Year));
+            Assert.AreEqual(new DateTime(2017, 3, 4), new DateTime(2017, 2, 4).Add(1, DatePart.Month));
+            Assert.AreEqual(new DateTime(2017, 2, 5), new DateTime(2017, 2, 4).Add(1, DatePart.Day));
+            Assert.AreEqual(new DateTime(2017, 2, 4, 1, 0, 0, 0), new DateTime(2017, 2, 4).Add(1, DatePart.Hour));
+            Assert.AreEqual(new DateTime(2017, 2, 4, 0, 1, 0, 0), new DateTime(2017, 2, 4).Add(1, DatePart.Minute));
+            Assert.AreEqual(new DateTime(2017, 2, 4, 0, 0, 1, 0), new DateTime(2017, 2, 4).Add(1, DatePart.Second));
+            Assert.AreEqual(new DateTime(2017, 2, 4, 0, 0, 0, 1), new DateTime(2017, 2, 4).Add(1, DatePart.Milisecond));
         }
+        #endregion
     }
     #endregion
 }
