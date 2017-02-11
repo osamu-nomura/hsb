@@ -17,7 +17,7 @@ namespace hsb.Classes.Tests
     {
         #region - InRangeTest
         /// <summary>
-        /// Test for InRange
+        /// Test of InRange
         /// </summary>
         [TestMethod()]
         public void InRangeTest()
