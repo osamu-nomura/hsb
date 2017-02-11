@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace hsb.Utils
+namespace hsb.Classes
 {
     #region 【Class : ValueWithName】
     /// <summary>
