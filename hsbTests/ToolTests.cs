@@ -10,8 +10,8 @@ using hsb.Classes;
 
 namespace hsb.Tests
 {
-
-    enum Gender
+    // TEST用ENUM定義
+    enum TestGender
     {
         [Display(Name = "不明")]
         Unknown,
@@ -53,10 +53,10 @@ namespace hsb.Tests
         [TestMethod()]
         public void GetFieldDisplayNameTest()
         {
-            Assert.AreEqual("不明", Tool.GetFieldDisplayName(Gender.Unknown));
-            Assert.AreEqual("男性", Tool.GetFieldDisplayName(Gender.Male));
-            Assert.AreEqual("女性", Tool.GetFieldDisplayName(Gender.Female));
-            Assert.AreEqual("Unisex", Tool.GetFieldDisplayName(Gender.Unisex));
+            Assert.AreEqual("不明", Tool.GetFieldDisplayName(TestGender.Unknown));
+            Assert.AreEqual("男性", Tool.GetFieldDisplayName(TestGender.Male));
+            Assert.AreEqual("女性", Tool.GetFieldDisplayName(TestGender.Female));
+            Assert.AreEqual("Unisex", Tool.GetFieldDisplayName(TestGender.Unisex));
         }
         #endregion
 
@@ -67,14 +67,14 @@ namespace hsb.Tests
         [TestMethod()]
         public void GetEnumListTest()
         {
-            var expected = new List<ValueWithName<Gender>>
+            var expected = new List<ValueWithName<TestGender>>
             {
-                new ValueWithName<Gender>(Gender.Unknown, "不明"),
-                new ValueWithName<Gender>(Gender.Male, "男性"),
-                new ValueWithName<Gender>(Gender.Female, "女性"),
-                new ValueWithName<Gender>(Gender.Unisex, "Unisex")
+                new ValueWithName<TestGender>(TestGender.Unknown, "不明"),
+                new ValueWithName<TestGender>(TestGender.Male, "男性"),
+                new ValueWithName<TestGender>(TestGender.Female, "女性"),
+                new ValueWithName<TestGender>(TestGender.Unisex, "Unisex")
             };
-            var list = Tool.GetEnumList<Gender>();
+            var list = Tool.GetEnumList<TestGender>();
             Assert.AreEqual(expected.Count, list?.Count ?? 0, "リストの件数が不一致");
             for (var i = 0; i < expected.Count; i++)
             {

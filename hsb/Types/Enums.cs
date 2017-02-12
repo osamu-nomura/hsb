@@ -13,6 +13,34 @@ namespace hsb.Types
     public enum DatePart { Year, Month, Day, Hour, Minute, Second, Milisecond }
     #endregion
 
+    #region 【Enum : Month】
+    /// <summary>
+    /// 月
+    /// </summary>
+    public enum Month
+    {
+        January = 1,
+        February = 2,
+        March = 3,
+        April = 4,
+        May = 5,
+        June = 6,
+        July = 7,
+        August = 8,
+        September = 9,
+        October = 10,
+        November = 11,
+        December = 12
+    }
+    #endregion
+
+    #region 【Enum : Quoter】
+    /// <summary>
+    /// 四半期
+    /// </summary>
+    public enum Quoter { First, Second, Third, Fourth }
+    #endregion
+
     #region 【Enum : MapStringFlags】
     /// <summary>
     /// LCMapStringWに使用するフラグ定数
