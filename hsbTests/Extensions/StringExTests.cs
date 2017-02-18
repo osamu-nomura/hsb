@@ -72,41 +72,6 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
-        #region - MapStringTest
-        /// <summary>
-        /// Test of MapString
-        /// </summary>
-        [TestMethod()]
-        public void MapStringTest()
-        {
-            Assert.AreEqual("アイウエオ", "あいうえお".MapString(Types.MapStringFlags.LCMAP_KATAKANA));
-            Assert.AreEqual("ABCDEF", "ＡＢＣＤＥＦ".MapString(Types.MapStringFlags.LCMAP_HALFWIDTH));
-        }
-        #endregion
-
-        #region - ToFullWidthTest
-        /// <summary>
-        /// Test of ToFullWidth
-        /// </summary>
-        [TestMethod()]
-        public void ToFullWidthTest()
-        {
-            Assert.AreEqual("ＡＢＣｄｅｆ", "ABCdef".ToFullWidth());
-            Assert.AreEqual("アイウ０１２", "ｱｲｳ012".ToFullWidth());
-        }
-        #endregion
-
-        #region - ToHalfWidthTest
-        /// <summary>
-        /// Test of ToHalfWidth
-        /// </summary>
-        [TestMethod()]
-        public void ToHalfWidthTest()
-        {
-            Assert.AreEqual("ABCdef", "ＡＢＣｄｅｆ".ToHalfWidth());
-            Assert.AreEqual("ｱｲｳあいう012", "アイウあいう０１２".ToHalfWidth());
-        }
-        #endregion
     }
     #endregion
 }

@@ -83,6 +83,33 @@ namespace hsb.Tests
             }
         }
         #endregion
+
+        #region - FillTest 
+        /// <summary>
+        /// Test of Fill
+        /// </summary>
+        [TestMethod()]
+        public void FillTest()
+        {
+            // CASE1
+            var expected1 = new List<int> { 1, 1, 1, 1, 1 };
+            Assert.IsTrue(expected1.SequenceEqual(Tool.Fill(1, 5)));
+            var expected2 = new List<string> { "a", "a", "a", "a", "a" };
+            Assert.IsTrue(expected2.SequenceEqual(Tool.Fill("a", 5)));
+
+            // CASE2
+            var today = DateTime.Today;
+            var expected3 = new List<DateTime>
+            {
+                today,
+                today.AddDays(1),
+                today.AddDays(2),
+                today.AddDays(3),
+                today.AddDays(4)
+            };
+            Assert.IsTrue(expected3.SequenceEqual(Tool.Fill(n => today.AddDays(n), 5)));
+        }
+        #endregion
     }
     #endregion
 }
