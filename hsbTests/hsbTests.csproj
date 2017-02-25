@@ -59,6 +59,7 @@
     <Compile Include="Extensions\DayOfWeekExTests.cs" />
     <Compile Include="Extensions\IEnumerableExTests.cs" />
     <Compile Include="Extensions\LsitExTests.cs" />
+    <Compile Include="Extensions\MonthExTests.cs" />
     <Compile Include="Extensions\StringExTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToolTests.cs" />

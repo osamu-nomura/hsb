@@ -45,6 +45,7 @@
     <Compile Include="Classes\ValueWithName.cs" />
     <Compile Include="Classes\Year.cs" />
     <Compile Include="Extensions\DayOfWeekEx.cs" />
+    <Compile Include="Extensions\MonthEx.cs" />
     <Compile Include="Tool.cs" />
     <Compile Include="Extensions\DateTimeEx.cs" />
     <Compile Include="Extensions\IEnumerableEx.cs" />
