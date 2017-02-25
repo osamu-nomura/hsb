@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Classes\DateRangeTests.cs" />
     <Compile Include="Classes\ValueWithNameTests.cs" />
+    <Compile Include="Classes\YearTests.cs" />
     <Compile Include="Extensions\DateTimeExTests.cs" />
     <Compile Include="Extensions\DayOfWeekExTests.cs" />
     <Compile Include="Extensions\IEnumerableExTests.cs" />

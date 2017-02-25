@@ -18,14 +18,14 @@ namespace hsb.Classes
         /// <summary>
         /// 範囲開始日 - Set private only
         /// </summary>
-        public DateTime? RangeFrom { get; private set; }
+        public DateTime? RangeFrom { get; protected set; }
         #endregion
 
         #region - RangeTo : 範囲終了日
         /// <summary>
         /// 範囲終了日 - Set private only
         /// </summary>
-        public DateTime? RangeTo { get; private set; }
+        public DateTime? RangeTo { get; protected set; }
         #endregion
 
         #region - Step : 列挙時のステップ数
@@ -90,7 +90,7 @@ namespace hsb.Classes
         }
         #endregion
 
-        #region **** Constructor(2)
+        #region - Constructor(2)
         /// <summary>
         /// コンストラクタ(2)
         /// </summary>

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Classes\DateRange.cs" />
     <Compile Include="Classes\ValueWithName.cs" />
+    <Compile Include="Classes\Year.cs" />
     <Compile Include="Extensions\DayOfWeekEx.cs" />
     <Compile Include="Tool.cs" />
     <Compile Include="Extensions\DateTimeEx.cs" />
