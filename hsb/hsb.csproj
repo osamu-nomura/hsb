@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DateRange.cs" />
+    <Compile Include="Classes\MonthRange.cs" />
+    <Compile Include="Classes\QuarterRange.cs" />
     <Compile Include="Classes\ValueWithName.cs" />
-    <Compile Include="Classes\Year.cs" />
+    <Compile Include="Classes\YearRange.cs" />
     <Compile Include="Extensions\DayOfWeekEx.cs" />
     <Compile Include="Extensions\MonthEx.cs" />
     <Compile Include="Tool.cs" />

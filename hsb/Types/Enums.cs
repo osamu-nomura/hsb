@@ -38,7 +38,7 @@ namespace hsb.Types
     /// <summary>
     /// 四半期
     /// </summary>
-    public enum Quoter { First = 1, Second = 2, Third = 3, Fourth =  4 }
+    public enum Quarter { First = 1, Second = 2, Third = 3, Fourth =  4 }
     #endregion
 
 }
