@@ -55,8 +55,10 @@
     <Compile Include="Classes\DateRangeTests.cs" />
     <Compile Include="Classes\ValueWithNameTests.cs" />
     <Compile Include="Classes\YearRangeTests.cs" />
+    <Compile Include="Extensions\ArrayExTests.cs" />
     <Compile Include="Extensions\DateTimeExTests.cs" />
     <Compile Include="Extensions\DayOfWeekExTests.cs" />
+    <Compile Include="Extensions\DictionaryExTests.cs" />
     <Compile Include="Extensions\IEnumerableExTests.cs" />
     <Compile Include="Extensions\LsitExTests.cs" />
     <Compile Include="Extensions\MonthExTests.cs" />

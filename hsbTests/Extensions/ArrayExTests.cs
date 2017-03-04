@@ -8,24 +8,13 @@ using System.Threading.Tasks;
 
 namespace hsb.Extensions.Tests
 {
-    #region 【Class : LsitExTests】
+    #region 【Test Class : ArrayExTests】
+    /// <summary>
+    /// ArrayExクラスのテスト
+    /// </summary>
     [TestClass()]
-    public class LsitExTests
+    public class ArrayExTests
     {
-        #region - AddTest
-        /// <summary>
-        /// Test og Add
-        /// </summary>
-        [TestMethod()]
-        public void AddTest()
-        {
-            var source = new List<int> { 1, 2, 3 };
-            source.Add(4, 5, 6);
-            var expected = new List<int> { 1, 2, 3, 4, 5, 6 };
-            Assert.IsTrue(source.SequenceEqual(expected));
-        }
-        #endregion
-
         #region - GetTest
         /// <summary>
         /// Test of Get
@@ -34,12 +23,12 @@ namespace hsb.Extensions.Tests
         public void GetTest()
         {
             // Case 1
-            Assert.AreEqual(3, (new List<int> { 1, 2, 3, 4 }).Get(2, 0));
-            Assert.AreEqual(0, (new List<int> { 1, 2, 3, 4 }).Get(10, 0));
-            Assert.AreEqual(0, (new List<int> { 1, 2, 3, 4 }).Get(-1, 0));
+            Assert.AreEqual(3, (new int[] { 1, 2, 3, 4 }).Get(2, 0));
+            Assert.AreEqual(0, (new int[] { 1, 2, 3, 4 }).Get(10, 0));
+            Assert.AreEqual(0, (new int[] { 1, 2, 3, 4 }).Get(-1, 0));
 
             // Case 2
-            var source = new List<DateTime>
+            var source = new DateTime[]
             {
                 new DateTime(2017, 3, 1),
                 new DateTime(2017, 3, 2),
