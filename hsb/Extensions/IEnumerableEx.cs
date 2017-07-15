@@ -19,16 +19,45 @@ namespace hsb.Extensions
         /// 文字列化
         /// </summary>
         /// <typeparam name="T">型パラメーター</typeparam>
-        /// <param name="values">this 列挙子</param>
+        /// <param name="collection">this 列挙子</param>
         /// <param name="separator">区切り文字</param>
         /// <param name="converter">変換関数</param>
         /// <returns>列挙された値を結合した文字列</returns>
-        public static string ToString<T>(this IEnumerable<T> values, string separator, Func<T, string> converter = null)
+        public static string ToString<T>(this IEnumerable<T> collection, string separator, Func<T, string> converter = null)
         {
             if (converter != null)
-                return string.Join(separator, values.Select(converter));
+                return string.Join(separator, collection.Select(converter));
             else
-                return string.Join(separator, values);
+                return string.Join(separator, collection);
+        }
+        #endregion
+
+        #region - Shuffle : IEnumerable をシャッフルする
+        /// <summary>
+        /// Enumerable をシャッフルする
+        /// </summary>
+        /// <typeparam name="T">要素の型</typeparam>
+        /// <param name="collection">IEnumerable</param>
+        /// <returns>IEnumerable</returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection)
+        {
+            return collection.OrderBy(i => Guid.NewGuid());
+        }
+        #endregion
+
+        #region - ForEach : IEnumerable版 ForEach
+        /// <summary>
+        /// IEnumerable版 ForEach
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="collection">IEnumerable版</param>
+        /// <param name="action">コールバック</param>
+        public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+        {
+            foreach (var item in collection)
+            {
+                action(item);
+            }
         }
         #endregion
 

@@ -28,6 +28,20 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(@"1,000 2,000 3,000", source2.ToString(" ", s => s.ToString("N0")));
         }
         #endregion
+
+        #region - ForEachTest
+        /// <summary>
+        /// Test of ForEach
+        /// </summary>
+        [TestMethod()]
+        public void ForEachTest()
+        {
+            var source = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var v = 0;
+            source.ForEach(n => v += n);
+            Assert.AreEqual(55, v);
+        }
+        #endregion
     }
     #endregion
 }
