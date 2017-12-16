@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace hsb.Extensions.Tests
 {
-    #region 【Class : LsitExTests】
+    #region 【Class : ListExTests】
     [TestClass()]
-    public class LsitExTests
+    public class ListExTests
     {
         #region - AddTest
         /// <summary>
@@ -48,6 +49,37 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(new DateTime(2017, 3, 2), source.Get(1, () => new DateTime(2017, 4, 1)));
             Assert.AreEqual(new DateTime(2017, 4, 1), source.Get(10, () => new DateTime(2017, 4, 1)));
             Assert.AreEqual(new DateTime(2017, 4, 1), source.Get(-1, () => new DateTime(2017, 4, 1)));
+        }
+        #endregion
+
+        #region - PickOutTest
+        /// <summary>
+        /// Test of PickOut
+        /// </summary>
+        [TestMethod()]
+        public void PickOutTest()
+        {
+            var source = new List<int> { 100, 200, 300 };
+            Assert.AreEqual(100, source.PickOut(0));
+            Assert.AreEqual(200, source.PickOut(0));
+            Assert.AreEqual(300, source.PickOut(0));
+            Assert.AreEqual(0, source.Count);
+        }
+        #endregion
+
+        #region - AddWithoutNullTest
+        /// <summary>
+        /// Test of AddWithoutNullTest
+        /// </summary>
+        [TestMethod()]
+        public void AddWithoutNullTest()
+        {
+            var list = new List<string>();
+            list.AddWithoutNull(null);
+            Assert.IsTrue(list.Count == 0);
+            list.AddWithoutNull("test");
+            Assert.IsTrue(list.Count == 1);
+            Assert.IsTrue(list[0] == "test");
         }
         #endregion
     }

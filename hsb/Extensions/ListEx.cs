@@ -27,6 +27,20 @@ namespace hsb.Extensions
         }
         #endregion
 
+        #region - AddWithoutNull : 要素がNULLでなければリストに追加する
+        /// <summary>
+        /// 要素がNULLでなければリストに追加する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="list">this リスト</param>
+        /// <param name="item">要素</param>
+        public static void AddWithoutNull<T>(this List<T> list, T item) where T: class
+        {
+            if (item != null)
+                list.Add(item);
+        }
+        #endregion
+
         #region - Get : リストより値を取得する(1)
         /// <summary>
         /// リストより値を取得する（添え字が範囲外の場合、デフォルト値を返す）

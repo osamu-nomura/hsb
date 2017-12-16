@@ -50,6 +50,43 @@ namespace hsb.Utilities
         }
         #endregion
 
+        #region - AllNull : すべての引数がNULLである
+        /// <summary>
+        /// すべての引数がNULLである
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="args">引数リスト</param>
+        /// <returns>True : すべての引数がNULLである / False : 引数リストに非NULLが存在する</returns>
+        public static bool AllNull<T>(params T[] args)
+        {
+            return !args.Any(c => c != null);
+        }
+        #endregion
+
+        #region - NothingNull : すべての引数が非NULLである
+        /// <summary>
+        /// すべての引数が非NULLである
+        /// </summary>
+        /// <param name="args">引数リスト</param>
+        /// <returns>True : すべての引数が非NULLである / False : 引数リストにNULLが存在する</returns>
+        public static bool NothingNull<T>(params T[] args)
+        {
+            return !args.Any(c => c == null);
+        }
+        #endregion
+
+        #region - AnyNull : 引数の中の一つ以上のNULLが存在する
+        /// <summary>
+        /// 引数の中の一つ以上のNULLが存在する
+        /// </summary>
+        /// <param name="args">引数リスト</param>
+        /// <returns>True : 引数リストにNULLが存在する / False : 引数リストにNULLが存在しない</returns>
+        public static bool AnyNull<T>(params T[] args)
+        {
+            return args.Any(c => c == null);
+        }
+        #endregion
+
         #endregion
     }
     #endregion
