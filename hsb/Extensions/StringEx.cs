@@ -23,8 +23,7 @@ namespace hsb.Extensions
         /// <returns>int?</returns>
         public static int? ToInt(this string s)
         {
-            var n = 0;
-            if (int.TryParse(s, out n))
+            if (int.TryParse(s, out int n))
                 return n;
             else
                 return null;
@@ -40,8 +39,7 @@ namespace hsb.Extensions
         /// <returns>double?</returns>
         public static double? ToDouble(this string s)
         {
-            var n = 0.0d;
-            if (double.TryParse(s, out n))
+            if (double.TryParse(s, out double n))
                 return n;
             else
                 return null;
@@ -57,8 +55,7 @@ namespace hsb.Extensions
         /// <returns>decimal?</returns>
         public static decimal? ToDecimal(this string s)
         {
-            decimal n = 0m;
-            if (decimal.TryParse(s, out n))
+            if (decimal.TryParse(s, out decimal n))
                 return n;
             else
                 return null;
@@ -74,8 +71,7 @@ namespace hsb.Extensions
         /// <returns>DateTime?</returns>
         public static DateTime? ToDateTime(this string s)
         {
-            DateTime dt;
-            if (DateTime.TryParse(s, out dt))
+            if (DateTime.TryParse(s, out DateTime dt))
                 return dt;
             else
                 return null;
