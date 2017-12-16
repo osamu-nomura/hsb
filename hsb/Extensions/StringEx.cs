@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Mail;
+using hsb.Utilities;
 
 namespace hsb.Extensions
 {
@@ -52,6 +54,20 @@ namespace hsb.Extensions
         /// <returns>DateTime?</returns>
         public static DateTime? ToDateTime(this string s)
             => DateTime.TryParse(s, out DateTime dt) ? (DateTime?)dt : null;
+        #endregion
+
+        #region - IsValidMailAddress : 文字列がメールアドレスとしての正しいかどうかチェックする
+        /// <summary>
+        /// 文字列がメールアドレスとしての正しいかどうかチェックする
+        /// </summary>
+        /// <param name="s">this 文字列</param>
+        /// <returns>bool</returns>
+        public static bool IsValidMailAddress(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return false;
+            return ConditionUtil.SafeExecute(() => { new MailAddress(s); }) == null;
+        }
         #endregion
 
         #endregion

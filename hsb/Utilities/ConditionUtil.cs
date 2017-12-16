@@ -87,6 +87,26 @@ namespace hsb.Utilities
         }
         #endregion
 
+        #region - SafeExecute : 例外を出さすにアクションを実行する
+        /// <summary>
+        /// 例外を出さすにアクションを実行する
+        /// </summary>
+        /// <param name="action">アクション</param>
+        /// <returns>正常時：null / 例外が発生した場合：発生した例外</returns>
+        public static Exception SafeExecute(Action action)
+        {
+            try
+            {
+                action?.Invoke();
+                return null;
+            }
+            catch (Exception e)
+            {
+                return e;
+            }
+        }
+        #endregion
+
         #endregion
     }
     #endregion

@@ -72,6 +72,19 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
+        #region - IsValidMailAddressTest
+        /// <summary>
+        /// Test of IsValidMailAddressTest
+        /// </summary>
+        [TestMethod()]
+        public void IsValidMailAddressTest()
+        {
+            Assert.IsTrue("foo@bar.com".IsValidMailAddress());
+            Assert.IsFalse("aaaaa".IsValidMailAddress());
+            Assert.IsFalse("foo@@bar.com".IsValidMailAddress());
+            Assert.IsFalse("@bar".IsValidMailAddress());
+        }
+        #endregion
     }
     #endregion
 }

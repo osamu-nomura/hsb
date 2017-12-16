@@ -1,5 +1,6 @@
 ﻿using hsb.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace hsb.Utilities.Tests
 {
@@ -80,6 +81,19 @@ namespace hsb.Utilities.Tests
             Assert.IsTrue(ConditionUtil.AnyNull<int?>(1, 2, 3, null));
             Assert.IsTrue(ConditionUtil.AnyNull<int?>(1, null, 3, null));
             Assert.IsFalse(ConditionUtil.AnyNull<int?>(1, 2, 3, 4, 5));
+        }
+        #endregion
+
+        #region - SafeExecuteTest
+        /// <summary>
+        /// Test of SafeExecuteTest
+        /// </summary>
+        [TestMethod()]
+        public void SafeExecuteTest()
+        {
+            int n = 0;
+            Assert.IsTrue(ConditionUtil.SafeExecute(() => { n = (int)10.0; }) == null);
+            Assert.IsTrue(ConditionUtil.SafeExecute(() => { n = n / 0;  }) is Exception);
         }
         #endregion
     }
