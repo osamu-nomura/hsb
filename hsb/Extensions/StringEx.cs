@@ -23,10 +23,7 @@ namespace hsb.Extensions
         /// <returns>int?</returns>
         public static int? ToInt(this string s)
         {
-            if (int.TryParse(s, out int n))
-                return n;
-            else
-                return null;
+            return int.TryParse(s, out int n) ? (int?)n : null;
         }
         #endregion
 
@@ -39,10 +36,7 @@ namespace hsb.Extensions
         /// <returns>double?</returns>
         public static double? ToDouble(this string s)
         {
-            if (double.TryParse(s, out double n))
-                return n;
-            else
-                return null;
+            return double.TryParse(s, out double n) ? (double?)n : null;
         }
         #endregion
 
@@ -55,10 +49,7 @@ namespace hsb.Extensions
         /// <returns>decimal?</returns>
         public static decimal? ToDecimal(this string s)
         {
-            if (decimal.TryParse(s, out decimal n))
-                return n;
-            else
-                return null;
+            return (decimal.TryParse(s, out decimal n)) ? (decimal?)n : null;
         }
         #endregion
 
@@ -71,10 +62,7 @@ namespace hsb.Extensions
         /// <returns>DateTime?</returns>
         public static DateTime? ToDateTime(this string s)
         {
-            if (DateTime.TryParse(s, out DateTime dt))
-                return dt;
-            else
-                return null;
+            return DateTime.TryParse(s, out DateTime dt) ? (DateTime?)dt : null;
         }
         #endregion
 
