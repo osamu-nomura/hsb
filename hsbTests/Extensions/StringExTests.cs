@@ -85,6 +85,38 @@ namespace hsb.Extensions.Tests
             Assert.IsFalse("@bar".IsValidMailAddress());
         }
         #endregion
+
+        #region - ToTextElementsTest
+        [TestMethod()]
+        public void ToTextElementsTest()
+        {
+            var s = "あ𠀋い";
+            var elements = s.ToTextElements();
+            Assert.IsTrue(elements?.Count == 3);
+            Assert.IsTrue(elements[1] == "𠀋");
+        }
+        #endregion
+
+        #region - TranslateTest
+        [TestMethod()]
+        public void TranslateTest()
+        {
+            // Test1
+            var s = "あ𠀋い";
+            var inTable = new string[] { "あ", "𠀋" };
+            var outTable = new string[] { "ア", "丈" };
+            Assert.IsTrue(s.Translate(inTable, outTable) == "ア丈い");
+
+            // Test2
+            Assert.IsTrue(s.Translate(inTable) == "い");
+
+            // Test3
+            Assert.IsTrue(s.Translate("あ𠀋", "ア丈") == "ア丈い");
+
+            // Test4
+            Assert.IsTrue(s.Translate("あ𠀋") == "い");
+        }
+        #endregion
     }
     #endregion
 }
