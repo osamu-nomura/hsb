@@ -87,6 +87,9 @@ namespace hsb.Extensions.Tests
         #endregion
 
         #region - ToTextElementsTest
+        /// <summary>
+        /// Test of ToTextElements
+        /// </summary>
         [TestMethod()]
         public void ToTextElementsTest()
         {
@@ -98,6 +101,9 @@ namespace hsb.Extensions.Tests
         #endregion
 
         #region - TranslateTest
+        /// <summary>
+        /// Test of Translate
+        /// </summary>
         [TestMethod()]
         public void TranslateTest()
         {

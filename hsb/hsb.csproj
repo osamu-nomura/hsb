@@ -51,6 +51,7 @@
     <Compile Include="Extensions\DayOfWeekEx.cs" />
     <Compile Include="Extensions\DictionaryEx.cs" />
     <Compile Include="Extensions\ListEx.cs" />
+    <Compile Include="Extensions\MatchCollectionEx.cs" />
     <Compile Include="Extensions\MonthEx.cs" />
     <Compile Include="Extensions\DateTimeEx.cs" />
     <Compile Include="Extensions\IEnumerableEx.cs" />
