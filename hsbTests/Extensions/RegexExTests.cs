@@ -9,12 +9,12 @@ using System.Text.RegularExpressions;
 
 namespace hsb.Extensions.Tests
 {
-    #region 【Test Class : MatchCollectionExTests】
+    #region 【Test Class : RegexExTests】
     /// <summary>
-    /// MatchCollectionExクラスのテスト
+    /// RegexExクラスのテスト
     /// </summary>
     [TestClass()]
-    public class MatchCollectionExTests
+    public class RegexExTests
     {
         #region -  GetGenericEnumeratorTest
         /// <summary>
@@ -45,6 +45,22 @@ namespace hsb.Extensions.Tests
             Assert.IsTrue(list[0].Value == "123");
             Assert.IsTrue(list[1].Value == "456");
             Assert.IsTrue(list[2].Value == "789");
+        }
+        #endregion
+
+        #region - ToListTest
+        /// <summary>
+        /// Test of ToArray()
+        /// </summary>
+        [TestMethod()]
+        public void ToArrayTest()
+        {
+            var reg = new Regex(@"(\d+)");
+            var array = reg.Matches("123-456-789").ToArray();
+            Assert.IsTrue(array.Length == 3);
+            Assert.IsTrue(array[0].Value == "123");
+            Assert.IsTrue(array[1].Value == "456");
+            Assert.IsTrue(array[2].Value == "789");
         }
         #endregion
     }
