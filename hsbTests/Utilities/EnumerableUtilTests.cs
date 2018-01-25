@@ -32,22 +32,16 @@ namespace hsb.Utilities.Tests
         }
         #endregion
 
-        #region - FillTest 
+        #region - RepeatTest 
         /// <summary>
-        /// Test of Fill
+        /// Test of Repeat
         /// </summary>
         [TestMethod()]
-        public void FillTest()
+        public void RepeatTest()
         {
             // CASE1
-            var expected1 = new List<int> { 1, 1, 1, 1, 1 };
-            Assert.IsTrue(expected1.SequenceEqual(EnumerableUtil.Fill(1, 5)));
-            var expected2 = new List<string> { "a", "a", "a", "a", "a" };
-            Assert.IsTrue(expected2.SequenceEqual(EnumerableUtil.Fill("a", 5)));
-
-            // CASE2
             var today = DateTime.Today;
-            var expected3 = new List<DateTime>
+            var expected = new List<DateTime>
             {
                 today,
                 today.AddDays(1),
@@ -55,7 +49,7 @@ namespace hsb.Utilities.Tests
                 today.AddDays(3),
                 today.AddDays(4)
             };
-            Assert.IsTrue(expected3.SequenceEqual(EnumerableUtil.Fill(n => today.AddDays(n), 5)));
+            Assert.IsTrue(expected.SequenceEqual(EnumerableUtil.Repeat(n => today.AddDays(n), 5)));
         }
         #endregion
     }

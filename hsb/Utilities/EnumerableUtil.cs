@@ -27,29 +27,15 @@ namespace hsb.Utilities
         }
         #endregion
 
-        #region - Fill : 指定した値を指定回数列挙する
+        #region - Repeat : 指定した関数を指定回数実行し結果を列挙する
         /// <summary>
-        /// 指定した値を指定回数列挙する
-        /// </summary>
-        /// <typeparam name="T">k型パラメータ</typeparam>
-        /// <param name="value">値</param>
-        /// <param name="count">回数</param>
-        /// <returns>列挙子</returns>
-        public static IEnumerable<T> Fill<T>(T value, int count)
-        {
-            return Enumerable.Range(0, count).Select(n => value);
-        }
-        #endregion
-
-        #region - Fill : 指定した値を指定回数列挙する
-        /// <summary>
-        /// 指定した値を指定回数列挙する
+        /// 指定した関数を指定回数実行し結果を列挙する
         /// </summary>
         /// <typeparam name="T">型パラメータ</typeparam>
         /// <param name="func">値を返すコールバック</param>
         /// <param name="count">回数</param>
         /// <returns>列挙子</returns>
-        public static IEnumerable<T> Fill<T>(Func<int, T> func, int count)
+        public static IEnumerable<T> Repeat<T>(Func<int, T> func, int count)
         {
             return Enumerable.Range(0, count).Select(n => func(n));
         }
