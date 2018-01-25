@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Globalization;
 using System.Net.Mail;
 using hsb.Utilities;
@@ -72,25 +73,20 @@ namespace hsb.Extensions
         }
         #endregion
 
-        #region - ToTextElements : 文字列を文字単位の配列として返す。（サロゲートペア対応）
+        #region - TextElements : 文字列を文字単位（サロゲートペア等を考慮して）で列挙する
         /// <summary>
-        /// 文字列を文字単位の配列として返す。（サロゲートペア対応）
+        /// 文字列を文字単位（サロゲートペア等を考慮して）で列挙する
         /// </summary>
         /// <param name="s">this 文字列</param>
-        /// <returns>1文字毎のリスト</returns>
-        public static List<string> ToTextElements(this string s)
+        /// <returns>1文字毎の列挙</returns>
+        public static IEnumerable<string> TextElements(this string s)
         {
-            var elements = new List<string>();
-            if (string.IsNullOrEmpty(s))
-                return elements;
-
             var tee = StringInfo.GetTextElementEnumerator(s);
             tee.Reset();
             while (tee.MoveNext())
             {
-                elements.Add(tee.GetTextElement());
+                yield return tee.GetTextElement();
             }
-            return elements;
         }
         #endregion
 
@@ -128,7 +124,7 @@ namespace hsb.Extensions
         {
             if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(inStr))
                 return s;
-            return Translate(s, inStr.ToTextElements(), outStr?.ToTextElements());
+            return Translate(s, inStr.TextElements().ToList(), outStr?.TextElements().ToList());
         }
         #endregion
 

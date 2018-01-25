@@ -86,15 +86,15 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
-        #region - ToTextElementsTest
+        #region - TextElementsTest
         /// <summary>
         /// Test of ToTextElements
         /// </summary>
         [TestMethod()]
-        public void ToTextElementsTest()
+        public void TextElementsTest()
         {
             var s = "あ𠀋い";
-            var elements = s.ToTextElements();
+            var elements = s.TextElements().ToList();
             Assert.IsTrue(elements?.Count == 3);
             Assert.IsTrue(elements[1] == "𠀋");
         }
