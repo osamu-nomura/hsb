@@ -70,6 +70,7 @@
     <Compile Include="Utilities\ConditionUtilTests.cs" />
     <Compile Include="Utilities\EnumerableUtilTests.cs" />
     <Compile Include="Utilities\EnumUtilTests.cs" />
+    <Compile Include="Utilities\EtcUtilTests.cs" />
     <Compile Include="Utilities\KanjiNumeralUtilTests.cs" />
   </ItemGroup>
   <ItemGroup>

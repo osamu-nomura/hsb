@@ -69,7 +69,7 @@ namespace hsb.Extensions
         {
             if (string.IsNullOrEmpty(s))
                 return false;
-            return ConditionUtil.SafeExecute(() => { new MailAddress(s); }) == null;
+            return EtcUtil.SafeExecute(() => { new MailAddress(s); }) == null;
         }
         #endregion
 
@@ -125,6 +125,23 @@ namespace hsb.Extensions
             if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(inStr))
                 return s;
             return Translate(s, inStr.TextElements().ToList(), outStr?.TextElements().ToList());
+        }
+        #endregion
+
+        #region - ReplaceCrLf : 文字列中の改行コードを置換する
+        /// <summary>
+        /// 文字列中の改行コードを置換する
+        /// </summary>
+        /// <param name="s">this 文字列</param>
+        /// <param name="replaceString">改行コードと置換する文字列</param>
+        /// <returns>置換後の文字列</returns>
+        public static string ReplaceCrLf(this string s, string replaceString = null)
+        {
+            if (string.IsNullOrEmpty(s))
+                return s;
+            return s.Replace("\r\n", replaceString)
+                    .Replace("\r", replaceString)
+                    .Replace("\n", replaceString);
         }
         #endregion
 

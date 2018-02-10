@@ -123,6 +123,21 @@ namespace hsb.Extensions.Tests
             Assert.IsTrue(s.Translate("あ𠀋") == "い");
         }
         #endregion
+
+        #region - ReplaceCrLfTest
+        /// <summary>
+        /// Test of ReplaceCrLf
+        /// </summary>
+        [TestMethod()]
+        public void ReplaceCrLfTest()
+        {
+            var s = "AAA\r\nBBB\rCCC\n";
+            Assert.AreEqual("AAA<br>BBB<br>CCC<br>", s.ReplaceCrLf("<br>"));
+            Assert.AreEqual("AAABBBCCC", s.ReplaceCrLf());
+            Assert.AreEqual(null, ((string)null).ReplaceCrLf("<br>"));
+            Assert.AreEqual("", "".ReplaceCrLf("<br>"));
+        }
+        #endregion
     }
     #endregion
 }
