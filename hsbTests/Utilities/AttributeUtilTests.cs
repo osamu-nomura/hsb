@@ -29,20 +29,40 @@ namespace hsb.Utilities.Tests
             Unisex
         }
 
-        #region - GetFieldDisplayNameTest
+        class TestClass
+        {
+            [Display(Name = "フィールド1")]
+            public int Field1;
+            [Display(Name = "プロパティ1")]
+            public int Property1 { get; set; }
+        }
+
+        #region - GetEnumFieldDisplayNameTest
         /// <summary>
-        /// Test of GetFieldDisplayName
+        /// Test of GetEnumFieldDisplayName
         /// </summary>
         [TestMethod()]
-        public void GetFieldDisplayNameTest()
+        public void GetEnumFieldDisplayNameTest()
         {
-            Assert.AreEqual("不明", AttributeUtil.GetFieldDisplayName(TestGender.Unknown));
-            Assert.AreEqual("男性", AttributeUtil.GetFieldDisplayName(TestGender.Male));
-            Assert.AreEqual("女性", AttributeUtil.GetFieldDisplayName(TestGender.Female));
-            Assert.AreEqual("Unisex", AttributeUtil.GetFieldDisplayName(TestGender.Unisex));
+            Assert.AreEqual("不明", AttributeUtil.GetEnumFieldDisplayName(TestGender.Unknown));
+            Assert.AreEqual("男性", AttributeUtil.GetEnumFieldDisplayName(TestGender.Male));
+            Assert.AreEqual("女性", AttributeUtil.GetEnumFieldDisplayName(TestGender.Female));
+            Assert.AreEqual("Unisex", AttributeUtil.GetEnumFieldDisplayName(TestGender.Unisex));
         }
         #endregion
 
+        #region - GetObjectPropertyDisplayNameTest
+        /// <summary>
+        /// Test of GetObjectPropertyDisplayName
+        /// </summary>
+        [TestMethod()]
+        public void GetObjectPropertyDisplayNameTest()
+        {
+            var obj = new TestClass();
+            Assert.AreEqual("フィールド1", AttributeUtil.GetObjectPropertyDisplayName(obj, nameof(obj.Field1)));
+            Assert.AreEqual("プロパティ1", AttributeUtil.GetObjectPropertyDisplayName(obj, nameof(obj.Property1)));
+        }
+        #endregion
     }
     #endregion
 }

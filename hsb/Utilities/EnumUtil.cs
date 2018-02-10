@@ -25,7 +25,7 @@ namespace hsb.Utilities
         {
             var it = Enum.GetValues(typeof(T)) as IEnumerable<T>;
             if (it != null)
-                return it.Select(v => new ValueWithName<T>(v, GetFieldDisplayName<T>(v))).ToList();
+                return it.Select(v => new ValueWithName<T>(v, GetEnumFieldDisplayName<T>(v))).ToList();
             return null;
         }
         #endregion
