@@ -21,7 +21,7 @@ namespace hsb.Extensions
         /// <returns>指定した年に変更した日付</returns>
         public static DateTime SetYear(this DateTime dt, int year)
         {
-            return new DateTime(year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -34,7 +34,20 @@ namespace hsb.Extensions
         /// <returns>指定した月に変更した日付</returns>
         public static DateTime SetMonth(this DateTime dt, int month)
         {
-            return new DateTime(dt.Year, month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(dt.Year, month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
+        }
+        #endregion
+
+        #region - SetMonth : 対象日の月を変更した値を返す
+        /// <summary>
+        /// 対象日の月を変更した値を返す
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <param name="month">月</param>
+        /// <returns>指定した月に変更した日付</returns>
+        public static DateTime SetMonth(this DateTime dt, Month month)
+        {
+            return new DateTime(dt.Year, (int)month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -47,7 +60,7 @@ namespace hsb.Extensions
         /// <returns>指定した日に変更した日付</returns>
         public static DateTime SetDay(this DateTime dt, int day)
         {
-            return new DateTime(dt.Year, dt.Month, day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(dt.Year, dt.Month, day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -75,6 +88,21 @@ namespace hsb.Extensions
         /// <param name="month">月</param>
         /// <returns>指定した月に変更した日付</returns>
         public static DateTime? SafeSetMonth(this DateTime dt, int month)
+        {
+            try { return dt.SetMonth(month); }
+            catch (ArgumentOutOfRangeException) { return null; }
+        }
+        #endregion
+
+        #region - SafeSetMonth : 対象日の月を変更した値を返す(安全版)
+        /// <summary>
+        /// 対象日の月を変更した値を返す
+        /// 値が不正な場合はNULLを返す
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <param name="month">月</param>
+        /// <returns>指定した月に変更した日付</returns>
+        public static DateTime? SafeSetMonth(this DateTime dt, Month month)
         {
             try { return dt.SetMonth(month); }
             catch (ArgumentOutOfRangeException) { return null; }
@@ -116,7 +144,7 @@ namespace hsb.Extensions
         /// <returns>対象日を含む年の年初日</returns>
         public static DateTime BeginOfYear(this DateTime dt)
         {
-            return new DateTime(dt.Year, 1, 1, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(dt.Year, 1, 1, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -128,7 +156,7 @@ namespace hsb.Extensions
         /// <returns>対象日を含む年の大みそか</returns>
         public static DateTime EndOfYear(this DateTime dt)
         {
-            return new DateTime(dt.Year, 12, 31, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(dt.Year, 12, 31, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -140,7 +168,7 @@ namespace hsb.Extensions
         /// <returns>対象日を含む月の月初日</returns>
         public static DateTime BeginOfMonth(this DateTime dt)
         {
-            return new DateTime(dt.Year, dt.Month, 1, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(dt.Year, dt.Month, 1, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -152,7 +180,7 @@ namespace hsb.Extensions
         /// <returns>対象日付の月末日</returns>
         public static DateTime EndOfMonth(this DateTime dt)
         {
-            return new DateTime(dt.Year, dt.Month, DateTime.DaysInMonth(dt.Year, dt.Month), dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(dt.Year, dt.Month, DateTime.DaysInMonth(dt.Year, dt.Month), dt.Hour, dt.Minute, dt.Second, dt.Millisecond,dt.Kind);
         }
         #endregion
 
@@ -283,7 +311,7 @@ namespace hsb.Extensions
         public static DateTime DropDate(this DateTime dt, DateTime? baseDate = null)
         {
             baseDate = baseDate ?? DateTime.MinValue;
-            return new DateTime(baseDate.Value.Year, baseDate.Value.Month, baseDate.Value.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            return new DateTime(baseDate.Value.Year, baseDate.Value.Month, baseDate.Value.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond, dt.Kind);
         }
         #endregion
 
@@ -340,6 +368,19 @@ namespace hsb.Extensions
         {
             var toDate = dt.Add(span, spanUnit);
             return new DateRange(dt, toDate, step, stepUnit);
+        }
+        #endregion
+
+        #region - ChangeKing : 日時種別を変更した日時を返す
+        /// <summary>
+        /// 日時種別を変更した日時を返す
+        /// </summary>
+        /// <param name="dt">this 日付</param>
+        /// <param name="kind">種別</param>
+        /// <returns>対象日の種別を変更した新しい日時</returns>
+        public static DateTime ChangeKind(this DateTime dt, DateTimeKind kind)
+        {
+            return DateTime.SpecifyKind(dt, kind);
         }
         #endregion
 

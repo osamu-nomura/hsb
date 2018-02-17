@@ -64,6 +64,24 @@ namespace hsb.Extensions.Tests
                 return;
             }
             Assert.Fail("例外が発生しなかった。");
+
+            // case 3
+            dt = new DateTime(2017, 1, 28);
+            expected = new DateTime(2017, 2, 28);
+            Assert.AreEqual(expected, dt.SetMonth(Month.February));
+
+            // case 4
+            dt = new DateTime(2016, 1, 31);
+            try
+            {
+                dt.SetMonth(Month.February);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+            Assert.Fail("例外が発生しなかった。");
+
         }
         #endregion
 
@@ -134,6 +152,15 @@ namespace hsb.Extensions.Tests
             // case 2
             dt = new DateTime(2016, 1, 31);
             Assert.AreEqual(null, dt.SafeSetMonth(2));
+
+            // case 3
+            dt = new DateTime(2017, 1, 28);
+            expected = new DateTime(2017, 2, 28);
+            Assert.AreEqual(expected, dt.SafeSetMonth(Month.February));
+
+            // case 4
+            dt = new DateTime(2016, 1, 31);
+            Assert.AreEqual(null, dt.SafeSetMonth(Month.February));
         }
         #endregion
 
@@ -455,6 +482,20 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(new DateTime(2017, 2, 4, 0, 1, 0, 0), new DateTime(2017, 2, 4).Add(1, DatePart.Minute));
             Assert.AreEqual(new DateTime(2017, 2, 4, 0, 0, 1, 0), new DateTime(2017, 2, 4).Add(1, DatePart.Second));
             Assert.AreEqual(new DateTime(2017, 2, 4, 0, 0, 0, 1), new DateTime(2017, 2, 4).Add(1, DatePart.Milisecond));
+        }
+        #endregion
+
+        #region - ChangeKindTest
+        /// <summary>
+        /// Test of ChangeKind
+        /// </summary>
+        [TestMethod()]
+        public void ChangeKindTest()
+        {
+            DateTime dt, expected;
+            dt = new DateTime(2018, 2, 17, 0, 0, 0);
+            expected = new DateTime(2018, 2, 17, 9, 0, 0);
+            Assert.AreEqual(expected, dt.ChangeKind(DateTimeKind.Utc).ToLocalTime());
         }
         #endregion
     }
