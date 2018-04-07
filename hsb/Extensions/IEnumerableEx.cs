@@ -61,6 +61,39 @@ namespace hsb.Extensions
         }
         #endregion
 
+        #region - Split : IEnumerable を指定個数のリストのリストに変換する
+        /// <summary>
+        /// IEnumerable を指定個数のリストのリストに変換する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="collection">IEnumerable版</param>
+        /// <param name="size">配列のサイズ</param>
+        /// <returns>リストのリスト</returns>
+        public static List<List<T>> Split<T>(this IEnumerable<T> collection, int size)
+        {
+            if (size <= 0)
+                throw new ArgumentException();
+
+            var n = 0;
+            var list = new List<List<T>>();
+            var items = new List<T>();
+            foreach (var item in collection)
+            {
+                if (n >= size)
+                {
+                    list.Add(items);
+                    items = new List<T>();
+                    n = 0;
+                }
+                items.Add(item);
+                n++;
+            }
+            if (n > 0)
+                list.Add(items);
+            return list;
+        }
+        #endregion
+
         #endregion
     }
     #endregion

@@ -24,12 +24,7 @@ namespace hsb.Extensions
         /// <param name="defaultValue">デフォルト値</param>
         /// <returns>配列の値</returns>
         public static T Get<T>(this T[] array, int i, T defaultValue)
-        {
-            if (array.Length > i && i >= 0)
-                return array[i];
-            else
-                return defaultValue;
-        }
+            => (array.Length > i && i >= 0) ? array[i] : defaultValue;
         #endregion
 
         #region - Get : 配列より値を取得する(2)
@@ -42,12 +37,7 @@ namespace hsb.Extensions
         /// <param name="generator">添え字が範囲外だった場合に呼ばれるコールバック</param>
         /// <returns>リストの値</returns>
         public static T Get<T>(this T[] array, int i, Func<T> generator)
-        {
-            if (array.Length > i && i >= 0)
-                return array[i];
-            else
-                return generator();
-        }
+            => (array.Length > i && i >= 0) ? array[i] : generator();
         #endregion
 
         #endregion

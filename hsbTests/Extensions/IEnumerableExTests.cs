@@ -42,6 +42,22 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(55, v);
         }
         #endregion
+
+        #region - SplitTest
+        /// <summary>
+        /// Test of Split
+        /// </summary>
+        [TestMethod]
+        public void SplitTest()
+        {
+            var source = new int[] { 1, 1, 1, 2, 2, 2, 3, 3 };
+            var list = source.Split(3);
+            Assert.AreEqual(list.Count, 3);
+            Assert.IsTrue(list[0].SequenceEqual(new int[] { 1, 1, 1 }));
+            Assert.IsTrue(list[1].SequenceEqual(new int[] { 2, 2, 2 }));
+            Assert.IsTrue(list[2].SequenceEqual(new int[] { 3, 3 }));
+        }
+        #endregion
     }
     #endregion
 }

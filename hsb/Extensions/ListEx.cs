@@ -51,9 +51,7 @@ namespace hsb.Extensions
         /// <param name="defaultVallue">デフォルト値</param>
         /// <returns>リストの値</returns>
         public static T Get<T>(this IList<T> list, int i, T defaultVallue)
-        {
-            return (list.Count > i && i >= 0) ? list[i] : defaultVallue;
-        }
+            => (list.Count > i && i >= 0) ? list[i] : defaultVallue;
         #endregion
 
         #region - Get : リストより値を取得する(2)
@@ -66,9 +64,7 @@ namespace hsb.Extensions
         /// <param name="generator">添え字が範囲外だった場合に呼ばれるコールバック</param>
         /// <returns>リストの値</returns>
         public static T Get<T>(this IList<T> list, int i, Func<T> generator)
-        {
-            return (list.Count > i && i >= 0) ? list[i] : generator();
-        }
+            => (list.Count > i && i >= 0) ? list[i] : generator();
         #endregion
 
         #region - PickOut : リストより値を取り出す。
