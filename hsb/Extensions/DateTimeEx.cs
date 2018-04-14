@@ -10,6 +10,13 @@ namespace hsb.Extensions
     /// </summary>
     public static class DateTimeEx
     {
+        #region ■ Members
+        /// <summary>
+        /// unix epochをDateTimeで表した定数 
+        /// </summary>
+        public readonly static DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        #endregion
+
         #region ■ Extension Methods
 
         #region - SetYear : 対象日の年を変更した値を返す
@@ -371,7 +378,7 @@ namespace hsb.Extensions
         }
         #endregion
 
-        #region - ChangeKing : 日時種別を変更した日時を返す
+        #region - ChangeKind : 日時種別を変更した日時を返す
         /// <summary>
         /// 日時種別を変更した日時を返す
         /// </summary>
@@ -381,6 +388,21 @@ namespace hsb.Extensions
         public static DateTime ChangeKind(this DateTime dt, DateTimeKind kind)
         {
             return DateTime.SpecifyKind(dt, kind);
+        }
+        #endregion
+
+        #region - ToUnixTime : 日時をUNIX時間に変換する
+        /// <summary>
+        /// 日時をUNIX時間に変換する
+        /// </summary>
+        /// <param name="dt">this DateTime</param>
+        /// <returns>UnixTime</returns>
+        public static Int64 ToUnixTime(this DateTime dt)
+        {
+            // 時刻をUTCに変換
+            var utc = dt.ToUniversalTime();
+            // unix epochからの経過秒数を求める
+            return (Int64)Math.Floor(utc.Subtract(UnixEpoch).TotalSeconds);
         }
         #endregion
 

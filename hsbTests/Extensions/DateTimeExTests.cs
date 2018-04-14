@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using hsb.Extensions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using hsb.Types;
 using System;
 
@@ -496,6 +497,23 @@ namespace hsb.Extensions.Tests
             dt = new DateTime(2018, 2, 17, 0, 0, 0);
             expected = new DateTime(2018, 2, 17, 9, 0, 0);
             Assert.AreEqual(expected, dt.ChangeKind(DateTimeKind.Utc).ToLocalTime());
+        }
+        #endregion
+
+        #region - ToUnixTimeTest
+        /// <summary>
+        /// Test of ToUnixTime
+        /// </summary>
+        [TestMethod()]
+        public void ToUnixTimeTest()
+        {
+            var dt = new DateTime(2018, 4, 14, 12, 52, 39);
+            var expected = 1523677959;
+            Assert.AreEqual(expected, dt.ToUnixTime());
+
+            var dt2 = new DateTime(2040, 4, 14, 13, 07, 20);
+            var expected2 = (long)2217989240;
+            Assert.AreEqual(expected2, dt2.ToUnixTime());
         }
         #endregion
     }

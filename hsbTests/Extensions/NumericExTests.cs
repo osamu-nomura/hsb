@@ -49,6 +49,18 @@ namespace hsb.Extensions.Tests
             Assert.IsFalse(6m.IsOdd());
         }
         #endregion
+
+        #region - UnitTimeToDateTimeTest
+        /// <summary>
+        /// Test of UnitTimeToDateTime
+        /// </summary>
+        [TestMethod()]
+        public void UnitTimeToDateTimeTest()
+        {
+            Assert.AreEqual(new DateTime(2018, 4, 14, 12, 52, 39), 1523677959.UnitTimeToDateTime());
+            Assert.AreEqual(new DateTime(2040, 4, 14, 13, 07, 20), 2217989240.UnitTimeToDateTime());
+        }
+        #endregion
     }
     #endregion
 }
