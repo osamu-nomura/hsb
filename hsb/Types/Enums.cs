@@ -41,4 +41,10 @@ namespace hsb.Types
     public enum Quarter { First = 1, Second = 2, Third = 3, Fourth =  4 }
     #endregion
 
+    #region - Sex : 性別
+    /// <summary>
+    /// 性別
+    /// </summary>
+    public enum Sex { Unkown = 0, Male = 1, Female = 2, Other = 9 }
+    #endregion
 }
