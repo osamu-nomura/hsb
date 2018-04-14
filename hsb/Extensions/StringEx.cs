@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
 using System.Net.Mail;
+using System.Text;
 using hsb.Utilities;
 
 namespace hsb.Extensions
@@ -142,6 +143,45 @@ namespace hsb.Extensions
             return s.Replace("\r\n", replaceString)
                     .Replace("\r", replaceString)
                     .Replace("\n", replaceString);
+        }
+        #endregion
+
+        #region - MD5 : 文字列のMD5ダイジェスト値を取得する。
+        /// <summary>
+        /// 文字列のMD5ダイジェスト値を取得する。
+        /// </summary>
+        /// <param name="s">this 文字列</param>
+        /// <param name="enc">エンコーディング</param>
+        /// <returns>MD5ダイジェスト値</returns>
+        public static string MD5(this string s, Encoding enc = null)
+        {
+            return Utilities.MD5.CreateDigest(s, enc);
+        }
+        #endregion
+
+        #region - SHA1 : 文字列のSHA1ダイジェスト値を取得する。
+        /// <summary>
+        /// 文字列のSHA1ダイジェスト値を取得する。
+        /// </summary>
+        /// <param name="s">this 文字列</param>
+        /// <param name="enc">エンコーディング</param>
+        /// <returns>MD5ダイジェスト値</returns>
+        public static string SHA1(this string s, Encoding enc = null)
+        {
+            return Utilities.SHA1.CreateDigest(s, enc);
+        }
+        #endregion
+
+        #region - SHA256 : 文字列のSHA256ダイジェスト値を取得する。
+        /// <summary>
+        /// 文字列のSHA256ダイジェスト値を取得する。
+        /// </summary>
+        /// <param name="s">this 文字列</param>
+        /// <param name="enc">エンコーディング</param>
+        /// <returns>MD5ダイジェスト値</returns>
+        public static string SHA256(this string s, Encoding enc = null)
+        {
+            return Utilities.SHA256.CreateDigest(s, enc);
         }
         #endregion
 
