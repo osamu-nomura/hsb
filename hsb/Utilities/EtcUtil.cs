@@ -61,65 +61,84 @@ namespace hsb.Utilities
         /// </summary>
         /// <typeparam name="T">型パラメータ</typeparam>
         /// <param name="func">関数</param>
+        /// <param name="whenException">例外が発生した場合の代替値</param>
         /// <returns>関数の戻り値と例外のタプル</returns>
-        public static (T Value, Exception E) SafeExecute<T>(Func<T> func)
+        public static (T Value, Exception E) SafeExecute<T>(Func<T> func, T whenException)
         {
             try
             {
                 if (func != null)
                     return (func(), null);
-                return (default(T), null);
+                return (whenException, null);
             }
             catch (Exception e)
             {
-                return (default(T), e);
+                return (whenException, e);
             }
         }
-        public static (T2 Value, Exception E) SafeExecute<T1,T2>(Func<T1,T2> func, T1 p)
+        public static (T Value, Exception E) SafeExecute<T>(Func<T> func, Func<T> whenException = null)
+        {
+            try
+            {
+                if (func != null)
+                    return (func(), null);
+                return (whenException != null) ? (whenException(), (Exception)null) : (default(T), (Exception)null);
+            }
+            catch (Exception e)
+            {
+                return (whenException != null) ? (whenException(), e) : (default(T), e);
+            }
+        }
+        public static (T2 Value, Exception E) SafeExecute<T1,T2>(Func<T1,T2> func, T1 p, T2 whenException)
         {
             try
             {
                 if (func != null)
                     return (func(p), null);
-                return (default(T2), null);
+                return (whenException, null);
             }
             catch (Exception e)
             {
-                return (default(T2), e);
+                return (whenException, e);
             }
         }
-        public static (T3 Value, Exception E) SafeExecute<T1, T2, T3>(Func<T1, T2, T3> func, T1 p1, T2 p2)
+        public static (T2 Value, Exception E) SafeExecute<T1, T2>(Func<T1, T2> func, T1 p, Func<T2> whenException = null)
+        {
+            try
+            {
+                if (func != null)
+                    return (func(p), null);
+                return (whenException != null) ? (whenException(), (Exception)null) : (default(T2), (Exception)null);
+            }
+            catch (Exception e)
+            {
+                return (whenException != null) ? (whenException(), e) : (default(T2), e);
+            }
+        }
+        public static (T3 Value, Exception E) SafeExecute<T1, T2, T3>(Func<T1, T2, T3> func, T1 p1, T2 p2, T3 whenException)
         {
             try
             {
                 if (func != null)
                     return (func(p1, p2), null);
-                return (default(T3), null);
+                return (whenException, null);
             }
             catch (Exception e)
             {
-                return (default(T3), e);
+                return (whenException, e);
             }
         }
-        #endregion
-
-        #region - SafeEvaluate : 関数を実行し、例外が発生した場合別の関数を実行し値を返す。
-        /// <summary>
-        /// 関数を実行し、例外が発生した場合別の関数を実行し値を返す。
-        /// </summary>
-        /// <typeparam name="T">型パラメータ</typeparam>
-        /// <param name="func">関数</param>
-        /// <param name="whenException">例外発生時に呼ばれる関数</param>
-        /// <returns>値</returns>
-        public static T SafeEvaluate<T>(Func<T> func, Func<T> whenException)
+        public static (T3 Value, Exception E) SafeExecute<T1, T2, T3>(Func<T1, T2, T3> func, T1 p1, T2 p2, Func<T3> whenException = null)
         {
             try
             {
-                return func();
+                if (func != null)
+                    return (func(p1, p2), null);
+                return (whenException != null) ? (whenException(), (Exception)null) : (default(T3), (Exception)null);
             }
-            catch
+            catch (Exception e)
             {
-                return whenException();
+                return (whenException != null) ? (whenException(), e) : (default(T3), e);
             }
         }
         #endregion

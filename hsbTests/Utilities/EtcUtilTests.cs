@@ -37,19 +37,12 @@ namespace hsbTests.Utilities.Tests
             var t6 = EtcUtil.SafeExecute((p1, p2) => p1 / p2, 100, 0);
             Assert.IsTrue(t6.Value == 0 && t6.E is DivideByZeroException);
 
-        }
-        #endregion
-
-        #region - SafeEvaluateTest
-        /// <summary>
-        /// Test of SafeEvaluate
-        /// </summary>
-        [TestMethod()]
-        public void SafeEvaluateTest()
-        {
-            var n = 100;            var ret = EtcUtil.SafeEvaluate(() => n / 10, () => n);
-            Assert.AreEqual(10, EtcUtil.SafeEvaluate(() => n / 10, () => n));
-            Assert.AreEqual(n, EtcUtil.SafeEvaluate(() => n / 0, () => n));
+            Assert.AreEqual(10, EtcUtil.SafeExecute(() => n / 0, 10).Value);
+            Assert.AreEqual(10, EtcUtil.SafeExecute((p) => n / p, 0, 10).Value);
+            Assert.AreEqual(10, EtcUtil.SafeExecute((p1, p2) => p1 / p2, 10, 0, 10).Value);
+            Assert.AreEqual(10, EtcUtil.SafeExecute(() => n / 0, () => 10).Value);
+            Assert.AreEqual(10, EtcUtil.SafeExecute((p) => n / p, 0, () => 10).Value);
+            Assert.AreEqual(10, EtcUtil.SafeExecute((p1,p2) => p1 / p2, 10, 0, () => 10).Value);
         }
         #endregion
 
