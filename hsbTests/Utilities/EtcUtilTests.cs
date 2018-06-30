@@ -40,6 +40,19 @@ namespace hsbTests.Utilities.Tests
         }
         #endregion
 
+        #region - SafeEvaluateTest
+        /// <summary>
+        /// Test of SafeEvaluate
+        /// </summary>
+        [TestMethod()]
+        public void SafeEvaluateTest()
+        {
+            var n = 100;            var ret = EtcUtil.SafeEvaluate(() => n / 10, () => n);
+            Assert.AreEqual(10, EtcUtil.SafeEvaluate(() => n / 10, () => n));
+            Assert.AreEqual(n, EtcUtil.SafeEvaluate(() => n / 0, () => n));
+        }
+        #endregion
+
         #region - ValueIfTest
         /// <summary>
         /// Test of ValueIf

@@ -103,6 +103,27 @@ namespace hsb.Utilities
         }
         #endregion
 
+        #region - SafeEvaluate : 関数を実行し、例外が発生した場合別の関数を実行し値を返す。
+        /// <summary>
+        /// 関数を実行し、例外が発生した場合別の関数を実行し値を返す。
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="func">関数</param>
+        /// <param name="whenException">例外発生時に呼ばれる関数</param>
+        /// <returns>値</returns>
+        public static T SafeEvaluate<T>(Func<T> func, Func<T> whenException)
+        {
+            try
+            {
+                return func();
+            }
+            catch
+            {
+                return whenException();
+            }
+        }
+        #endregion
+
         #region - ValueIf : 値1を条件式で評価し、真の場合は値1でなければ値2を返す。
         /// <summary>
         /// 値1を条件式で評価し、真の場合は値1でなければ値2を返す。
