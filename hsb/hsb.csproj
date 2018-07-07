@@ -62,6 +62,7 @@
     <Compile Include="Types\Enums.cs" />
     <Compile Include="Utilities\AttributeUtil.cs" />
     <Compile Include="Utilities\ConditionUtil.cs" />
+    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\EnumerableUtil.cs" />
     <Compile Include="Utilities\EnumUtil.cs" />
     <Compile Include="Utilities\KanjiNumeralUtil.cs" />
