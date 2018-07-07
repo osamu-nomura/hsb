@@ -36,6 +36,58 @@ namespace hsb.Extensions
         public static bool IsOdd(this decimal num) => num % 2 != 0;
         #endregion
 
+        #region - IsPrime : 値が素数
+        /// <summary>
+        /// 値が素数
+        /// </summary>
+        /// <param name="num">値</param>
+        /// <returns>True : 素数 / False : 素数でない</returns>
+        public static bool IsPrime(this Int16 num)
+        {
+            if (num == 2) return true;
+            if (num < 2 || num % 2 == 0) return false;
+            for (Int16 i = 3; i < num; i += 2)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+        }
+        public static bool IsPrime(this Int32 num)
+        {
+            if (num == 2) return true;
+            if (num < 2 || num % 2 == 0) return false;
+            for (Int32 i = 3; i < num; i += 2)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+        }
+        public static bool IsPrime(this Int64 num)
+        {
+            if (num == 2) return true;
+            if (num < 2 || num % 2 == 0) return false;
+            for (Int64 i = 3; i < num; i += 2)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+        }
+        public static bool IsPrime(this Decimal num)
+        {
+            if (num == 2) return true;
+            if (num < 2 || num % 2 == 0) return false;
+            for (Decimal i = 3; i < num; i += 2)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+        }
+        #endregion
+
         #region - UnixTimeToDateTime : 値をUnixTime値としてDateTimeを返す
         /// <summary>
         /// 値をUnixTime値としてDateTimeを返す

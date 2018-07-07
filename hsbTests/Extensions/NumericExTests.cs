@@ -50,6 +50,25 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
+        #region - IsPrimeTest
+        /// <summary>
+        /// Test of IsPrime
+        /// </summary>
+        [TestMethod()]
+        public void IsPrimeTest()
+        {
+            Assert.IsTrue(((Int16)11).IsPrime());
+            Assert.IsTrue(53.IsPrime());
+            Assert.IsTrue(((Int64)307).IsPrime());
+            Assert.IsTrue((619m).IsPrime());
+
+            Assert.IsFalse(((Int16)32).IsPrime());
+            Assert.IsFalse((51).IsPrime());
+            Assert.IsFalse(((Int64)309).IsPrime());
+            Assert.IsFalse((623m).IsPrime());
+        }
+        #endregion
+
         #region - UnixTimeToDateTimeTest
         /// <summary>
         /// Test of UnitTimeToDateTime
