@@ -45,18 +45,6 @@ namespace hsbTests.Utilities.Tests
             Assert.AreEqual(10, EtcUtil.SafeExecute((p1,p2) => p1 / p2, 10, 0, () => 10).Value);
         }
         #endregion
-
-        #region - ValueIfTest
-        /// <summary>
-        /// Test of ValueIf
-        /// </summary>
-        [TestMethod()]
-        public void ValueIfTest()
-        {
-            Assert.AreEqual(100, EtcUtil.ValueIf(100, n => n >= 100, 10));
-            Assert.AreEqual(100, EtcUtil.ValueIf(10, n => n >= 100, 100));
-        }
-        #endregion
     }
     #endregion
 }

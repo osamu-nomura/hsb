@@ -142,21 +142,6 @@ namespace hsb.Utilities
             }
         }
         #endregion
-
-        #region - ValueIf : 値1を条件式で評価し、真の場合は値1でなければ値2を返す。
-        /// <summary>
-        /// 値1を条件式で評価し、真の場合は値1でなければ値2を返す。
-        /// </summary>
-        /// <typeparam name="T">型パラメータ</typeparam>
-        /// <param name="value">値1</param>
-        /// <param name="conditon">条件式</param>
-        /// <param name="elseValue">値2</param>
-        /// <returns>値</returns>
-        public static T ValueIf<T>(T value, Func<T, bool>conditon, T elseValue)
-        {
-            return conditon(value) ? value : elseValue;
-        }
-        #endregion
     }
     #endregion
 }
