@@ -36,15 +36,15 @@ namespace hsb.Extensions
         public static bool IsOdd(this decimal num) => num % 2 != 0;
         #endregion
 
-        #region - UnitTimeToDateTime : 値をUnixTime値としてDateTimeを返す
+        #region - UnixTimeToDateTime : 値をUnixTime値としてDateTimeを返す
         /// <summary>
         /// 値をUnixTime値としてDateTimeを返す
         /// </summary>
         /// <param name="n">this 値</param>
         /// <returns>DateTime</returns>
-        public static DateTime UnitTimeToDateTime(this Int32 n) => DateTimeEx.UnixEpoch.AddSeconds(n).ToLocalTime();
-        public static DateTime UnitTimeToDateTime(this UInt32 n) => DateTimeEx.UnixEpoch.AddSeconds(n).ToLocalTime();
-        public static DateTime UnitTimeToDateTime(this Int64 n) => DateTimeEx.UnixEpoch.AddSeconds(n).ToLocalTime();
+        public static DateTime UnixTimeToDateTime(this Int32 n) => DateTimeEx.UnixEpoch.AddSeconds(n).ToLocalTime();
+        public static DateTime UnixTimeToDateTime(this UInt32 n) => DateTimeEx.UnixEpoch.AddSeconds(n).ToLocalTime();
+        public static DateTime UnixTimeToDateTime(this Int64 n) => DateTimeEx.UnixEpoch.AddSeconds(n).ToLocalTime();
         #endregion
     }
     #endregion

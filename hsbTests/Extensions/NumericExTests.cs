@@ -50,15 +50,15 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
-        #region - UnitTimeToDateTimeTest
+        #region - UnixTimeToDateTimeTest
         /// <summary>
         /// Test of UnitTimeToDateTime
         /// </summary>
         [TestMethod()]
-        public void UnitTimeToDateTimeTest()
+        public void UnixTimeToDateTimeTest()
         {
-            Assert.AreEqual(new DateTime(2018, 4, 14, 12, 52, 39), 1523677959.UnitTimeToDateTime());
-            Assert.AreEqual(new DateTime(2040, 4, 14, 13, 07, 20), 2217989240.UnitTimeToDateTime());
+            Assert.AreEqual(new DateTime(2018, 4, 14, 12, 52, 39), 1523677959.UnixTimeToDateTime());
+            Assert.AreEqual(new DateTime(2040, 4, 14, 13, 07, 20), 2217989240.UnixTimeToDateTime());
         }
         #endregion
     }
