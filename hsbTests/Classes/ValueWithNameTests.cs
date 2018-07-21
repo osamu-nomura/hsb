@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using hsb.Utils;
+using hsb.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using hsb.Classes;
 
-namespace hsb.Utils.Tests
+namespace hsb.Utilities.Tests
 {
     #region 【Class : ValueWithNameTests】
     /// <summary>

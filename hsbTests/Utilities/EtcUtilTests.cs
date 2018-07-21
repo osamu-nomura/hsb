@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace hsbTests.Utilities.Tests
+namespace hsb.Utilities.Tests
 {
     #region 【class : EtcUtilTests】
     /// <summary>
