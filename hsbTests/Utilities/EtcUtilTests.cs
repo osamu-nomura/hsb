@@ -1,6 +1,8 @@
 ﻿using hsb.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace hsb.Utilities.Tests
 {
@@ -43,6 +45,25 @@ namespace hsb.Utilities.Tests
             Assert.AreEqual(10, EtcUtil.SafeExecute(() => n / 0, () => 10).Value);
             Assert.AreEqual(10, EtcUtil.SafeExecute((p) => n / p, 0, () => 10).Value);
             Assert.AreEqual(10, EtcUtil.SafeExecute((p1,p2) => p1 / p2, 10, 0, () => 10).Value);
+        }
+        #endregion
+
+        #region - MutexLockTest
+        /// <summary>
+        /// TEST of MutexLock
+        /// </summary>
+        [TestMethod()]
+        public void MutexLockTest()
+        {
+            var id = "{614B94E7-AF73-4A3B-8788-6F0D9C71F8A5}";
+            var mutex1 = EtcUtil.LockMutex(id);
+            Assert.IsNotNull(mutex1);
+            Task.Run(() =>
+            {
+                var mutex2 = EtcUtil.LockMutex(id);
+                Assert.IsNull(mutex2);
+            }).Wait();
+            EtcUtil.UnlockMutex(mutex1);
         }
         #endregion
     }

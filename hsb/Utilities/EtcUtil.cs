@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace hsb.Utilities
@@ -139,6 +140,37 @@ namespace hsb.Utilities
             catch (Exception e)
             {
                 return (whenException != null) ? (whenException(), e) : (default(T3), e);
+            }
+        }
+        #endregion
+
+        #region - LockMutex : Mutexを利用してロックする
+        /// <summary>
+        /// Mutexを利用してロックする
+        /// </summary>
+        /// <param name="id">ID値</param>
+        /// <returns>Mutex</returns>
+        public static Mutex LockMutex(string id)
+        {
+            var mutex = new Mutex(false, id);
+            if (mutex.WaitOne(0, false))
+                return mutex;
+            mutex.Close();
+            return null;
+        }
+        #endregion
+
+        #region - UnlockMutex : Mutexのロックを解除する
+        /// <summary>
+        /// Mutexのロックを解除する
+        /// </summary>
+        /// <param name="mutex">Mutex</param>
+        public static void UnlockMutex(Mutex mutex)
+        {
+            if (mutex != null)
+            {
+                mutex.ReleaseMutex();
+                mutex.Close();
             }
         }
         #endregion
