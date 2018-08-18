@@ -516,6 +516,33 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(expected2, dt2.ToUnixTime());
         }
         #endregion
+
+        #region - DaysInMonthTest
+        /// <summary>
+        /// Test of DaysInMonth
+        /// </summary>
+        [TestMethod()]
+        public void DaysInMonthTest()
+        {
+            Assert.AreEqual(28, (new DateTime(2018, 2, 20)).DaysInMonth());
+            Assert.AreEqual(29, (new DateTime(2016, 2, 20)).DaysInMonth());
+            Assert.AreEqual(30, (new DateTime(2018, 6, 10)).DaysInMonth());
+            Assert.AreEqual(31, (new DateTime(2018, 8, 10)).DaysInMonth());
+        }
+        #endregion
+
+        #region - IsSameYearMonthTest
+        /// <summary>
+        /// Test of IsSameYearMonth
+        /// </summary>
+        [TestMethod()]
+        public void IsSameYearMonthTest()
+        {
+            Assert.IsTrue((new DateTime(2018, 8, 2)).IsSameYearMonth(new DateTime(2018, 8, 30)));
+            Assert.IsFalse((new DateTime(2018, 8, 2)).IsSameYearMonth(new DateTime(2018, 9, 1)));
+            Assert.IsFalse((new DateTime(2018, 8, 2)).IsSameYearMonth(null));
+        }
+        #endregion
     }
     #endregion
 }

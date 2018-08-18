@@ -406,6 +406,34 @@ namespace hsb.Extensions
         }
         #endregion
 
+        #region - DaysInMonth : 該当月の日数を返す
+        /// <summary>
+        /// 該当月の日数を返す
+        /// </summary>
+        /// <param name="dt">this DateTime</param>
+        /// <returns>日数</returns>
+        public static int DaysInMonth(this DateTime dt)
+        {
+            return DateTime.DaysInMonth(dt.Year, dt.Month);
+        }
+        #endregion
+
+        #region - IsSameYearMonth : 指定日時が同一年月か？
+        /// <summary>
+        /// 指定日時が同一年月か？
+        /// </summary>
+        /// <param name="dt1">this 基準日時</param>
+        /// <param name="dt2">指定日時</param>
+        /// <returns>True:同一年月 / False:同一年月ではない</returns>
+        public static bool IsSameYearMonth(this DateTime dt1, DateTime? dt2)
+        {
+            if (dt2.HasValue)
+                return dt1.Year == dt2.Value.Year && dt1.Month == dt2.Value.Month;
+            else
+                return false;
+        }
+        #endregion
+
         #endregion
     }
     #endregion
