@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace hsb.Utilities
 {
@@ -90,6 +91,227 @@ namespace hsb.Utilities
             }
             else
                 return null;
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(1)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(1)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <param name="millisecond">mm秒</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second, millisecond);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(2)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(2)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <param name="millisecond">mm秒</param>
+        /// <param name="kind">種別</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond, DateTimeKind kind)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second, millisecond, kind);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(3)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(3)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <param name="millisecond">mm秒</param>
+        /// <param name="calendar">カレンダー</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second, millisecond, calendar);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(4)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(4)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <param name="millisecond">mm秒</param>
+        /// <param name="calendar">カレンダー</param>
+        /// <param name="kind">種別</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar, DateTimeKind kind)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second, millisecond, calendar, kind);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(5)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(1)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(6)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(6)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <param name="kind">種別</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, DateTimeKind kind)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second, kind);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(7)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(7)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="hour">時</param>
+        /// <param name="minute">分</param>
+        /// <param name="second">秒</param>
+        /// <param name="calendar">カレンダー</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, Calendar calendar)
+        {
+            try
+            {
+                return new DateTime(year, month, day, hour, minute, second, calendar);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(8)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(8)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day)
+        {
+            try
+            {
+                return new DateTime(year, month, day);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region - Create : DateTimeを生成する(9)
+        /// <summary>
+        /// DateTimeを生成する。引数が不正の場合はNULLを返す。(9)
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="day">日</param>
+        /// <param name="calendar">カレンダー</param>
+        /// <returns>DateTime?</returns>
+        public static DateTime? Create(int year, int month, int day, Calendar calendar)
+        {
+            try
+            {
+                return new DateTime(year, month, day, calendar);
+            }
+            catch
+            {
+                return null;
+            }
         }
         #endregion
 
