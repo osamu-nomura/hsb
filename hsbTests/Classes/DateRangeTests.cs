@@ -95,8 +95,6 @@ namespace hsb.Classes.Tests
             // Case1
             Assert.AreEqual(@"2017/02/01 0:00:00～2017/02/10 0:00:00", range.ToString());
             // Case2
-            Assert.AreEqual(@"2017/02/01 to 2017/02/10", range.ToString(@"{0:yyyy/MM/dd} to {1:yyyy/MM/dd}"));
-            // Case 3
             range.DisplayFormat = @"{0:yyyy/MM/dd} to {1:yyyy/MM/dd}";
             Assert.AreEqual(@"2017/02/01 to 2017/02/10", range.ToString());
         }

@@ -12,6 +12,21 @@ namespace hsb.Classes
     /// </summary>
     public class DateRange : IEnumerable<DateTime>
     {
+        #region ■ Static Members
+        /// <summary>
+        /// ToString()自の書式設定（デフォルト）
+        /// </summary>
+        public static string DefaultDisplayFormat = "{0}～{1}";
+        /// <summary>
+        /// ToString()自の書式設定（デフォルト）
+        /// </summary>
+        public static string DefaultDisplayFormatFromOnly = "{0}～";
+        /// <summary>
+        /// ToString()自の書式設定（デフォルト）
+        /// </summary>
+        public static string DefaultDisplayFormatToOnly = "～{1}";
+        #endregion
+
         #region ■ Properties
 
         #region - RangeFrom : 範囲開始日
@@ -47,6 +62,20 @@ namespace hsb.Classes
         /// ToString() 時の書式設定
         /// </summary>
         public string DisplayFormat { get; set; }
+        #endregion
+
+        #region - DisplayFormatFromOnly : ToString()時の書式設定
+        /// <summary>
+        /// ToString()時の書式設定(Toが省略されたとき)
+        /// </summary>
+        public string DisplayFormatFromOnly { get; set; }
+        #endregion
+
+        #region - DisplayFormatToOnly : ToString()時の書式設定
+        /// <summary>
+        /// ToString()時の書式設定(Fromが省略されたとき)
+        /// </summary>
+        public string DisplayFormatToOnly { get; set; }
         #endregion
 
         #region - IsEmpty : 範囲が空？
@@ -86,7 +115,9 @@ namespace hsb.Classes
             RangeTo = null;
             Step = 1;
             StepUnit = DatePart.Day;
-            DisplayFormat = @"{0}～{1}";
+            DisplayFormat = null;
+            DisplayFormatFromOnly = null;
+            DisplayFormatToOnly = null;
         }
         #endregion
 
@@ -175,26 +206,32 @@ namespace hsb.Classes
         }
         #endregion
 
-        #region - ToString : 文字列化(1)
+        #region - ToString : 文字列化
         /// <summary>
-        /// 文字列化(1)
-        /// </summary>
-        /// <param name="displayFormat">表示書式</param>
-        /// <returns>日時の文字列</returns>
-        public string ToString(string displayFormat)
-        {
-            return string.Format(displayFormat, (RangeFrom ?? DateTime.MinValue), (RangeTo ?? DateTime.MaxValue));
-        }
-        #endregion
-
-        #region - ToString : 文字列化(2)
-        /// <summary>
-        /// 文字列化(2)
+        /// 文字列化
         /// </summary>
         /// <returns>日時の文字列</returns>
         public override string ToString()
         {
-            return ToString(DisplayFormat);
+            if (RangeFrom.HasValue && RangeTo.HasValue)
+            {
+                var fmt = DisplayFormat ?? DefaultDisplayFormat;
+                return string.Format(fmt, RangeFrom.Value, RangeTo.Value);
+            }
+            else if (RangeFrom.HasValue)
+            {
+                var fmt = DisplayFormatFromOnly ?? DefaultDisplayFormatFromOnly;
+                return string.Format(fmt, RangeFrom.Value);
+            }
+            else if (RangeTo.HasValue)
+            {
+                var fmt = DisplayFormatToOnly ?? DefaultDisplayFormatToOnly;
+                return string.Format(fmt, RangeTo.Value);
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
         #endregion
 
