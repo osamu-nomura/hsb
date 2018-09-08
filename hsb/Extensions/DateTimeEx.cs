@@ -303,9 +303,7 @@ namespace hsb.Extensions
         /// <param name="dt">this 日時</param>
         /// <returns>対象日の0:00:00</returns>
         public static DateTime DropTime(this DateTime dt)
-        {
-            return new DateTime(dt.Year, dt.Month, dt.Day);
-        }
+            => dt.Date;
         #endregion
 
         #region - DropDate : 日時より日付を落とす
@@ -356,9 +354,7 @@ namespace hsb.Extensions
         /// <param name="stepUnit"ステップ単位></param>
         /// <returns>対象日より指定日までの日付範囲</returns>
         public static DateRange To(this DateTime dt, DateTime toDate, int step = 1, DatePart stepUnit = DatePart.Day)
-        {
-            return new DateRange(dt, toDate, step, stepUnit);
-        }
+            => new DateRange(dt, toDate, step, stepUnit);
         #endregion
 
         #region - To : 対象日より指定した単位で加算した日付までの日付範囲を返す。
@@ -386,9 +382,7 @@ namespace hsb.Extensions
         /// <param name="kind">種別</param>
         /// <returns>対象日の種別を変更した新しい日時</returns>
         public static DateTime ChangeKind(this DateTime dt, DateTimeKind kind)
-        {
-            return DateTime.SpecifyKind(dt, kind);
-        }
+            => DateTime.SpecifyKind(dt, kind);
         #endregion
 
         #region - ToUnixTime : 日時をUNIX時間に変換する
@@ -413,9 +407,7 @@ namespace hsb.Extensions
         /// <param name="dt">this DateTime</param>
         /// <returns>日数</returns>
         public static int DaysInMonth(this DateTime dt)
-        {
-            return DateTime.DaysInMonth(dt.Year, dt.Month);
-        }
+            => DateTime.DaysInMonth(dt.Year, dt.Month);
         #endregion
 
         #region - IsSameYearMonth : 指定日時が同一年月か？
@@ -432,6 +424,26 @@ namespace hsb.Extensions
             else
                 return false;
         }
+        #endregion
+
+        #region - Yesterday : 対象日の前日
+        /// <summary>
+        /// 対象日の前日
+        /// </summary>
+        /// <param name="dt">this DateTime</param>
+        /// <returns>対象日の前日</returns>
+        public static DateTime Yesterday(this DateTime dt)
+            => dt.AddDays(-1);
+        #endregion
+
+        #region - Tomorrow : 対象日の翌日
+        /// <summary>
+        /// 対象日の翌日
+        /// </summary>
+        /// <param name="dt">thid DateTime</param>
+        /// <returns>対象日の翌日</returns>
+        public static DateTime Tomorrow(this DateTime dt)
+            => dt.AddDays(1);
         #endregion
 
         #endregion

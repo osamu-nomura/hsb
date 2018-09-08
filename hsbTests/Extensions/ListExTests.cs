@@ -82,6 +82,22 @@ namespace hsb.Extensions.Tests
             Assert.IsTrue(list[0] == "test");
         }
         #endregion
+
+        #region - IsWithInTest
+        /// <summary>
+        /// Test of IsWIthIn
+        /// </summary>
+        [TestMethod()]
+        public void IsWithInTest()
+        {
+            var list = new List<int> { 1, 2, 3, 4, 5 };
+            Assert.IsTrue(list.IsWithin(0));
+            Assert.IsTrue(list.IsWithin(3));
+            Assert.IsTrue(list.IsWithin(4));
+            Assert.IsFalse(list.IsWithin(-1));
+            Assert.IsFalse(list.IsWithin(5));
+        }
+        #endregion
     }
     #endregion
 }

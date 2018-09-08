@@ -51,7 +51,7 @@ namespace hsb.Extensions
         /// <param name="defaultVallue">デフォルト値</param>
         /// <returns>リストの値</returns>
         public static T Get<T>(this IList<T> list, int i, T defaultVallue)
-            => (list.Count > i && i >= 0) ? list[i] : defaultVallue;
+            => list.IsWithin(i) ? list[i] : defaultVallue;
         #endregion
 
         #region - Get : リストより値を取得する(2)
@@ -64,7 +64,7 @@ namespace hsb.Extensions
         /// <param name="generator">添え字が範囲外だった場合に呼ばれるコールバック</param>
         /// <returns>リストの値</returns>
         public static T Get<T>(this IList<T> list, int i, Func<T> generator)
-            => (list.Count > i && i >= 0) ? list[i] : generator();
+            => (list.IsWithin(i)) ? list[i] : generator();
         #endregion
 
         #region - PickOut : リストより値を取り出す。
@@ -77,7 +77,7 @@ namespace hsb.Extensions
         /// <returns>リストより取り出した値</returns>
         public static T PickOut<T>(this IList<T> list, int i)
         {
-            if (list.Count > i && i >= 0)
+            if (list.IsWithin(i))
             {
                 var item = list[i];
                 list.RemoveAt(i);
@@ -85,6 +85,18 @@ namespace hsb.Extensions
             }
             throw new IndexOutOfRangeException();
         }
+        #endregion
+
+        #region - IsWithin : インデックスが範囲内かどうかチェックする
+        /// <summary>
+        /// インデックスが範囲内かどうかチェックする
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="list">this リスト</param>
+        /// <param name="i">インデックス</param>
+        /// <returns>True : 範囲内 / False : 範囲外</returns>
+        public static bool IsWithin<T>(this IList<T> list, int i)
+            => list.Count > i && i >= 0;
         #endregion
 
         #endregion

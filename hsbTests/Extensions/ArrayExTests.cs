@@ -39,6 +39,22 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(new DateTime(2017, 4, 1), source.Get(-1, () => new DateTime(2017, 4, 1)));
         }
         #endregion
+
+        #region - IsWithInTest
+        /// <summary>
+        /// Test of IsWIthIn
+        /// </summary>
+        [TestMethod()]
+        public void IsWithInTest()
+        {
+            var array = new int[] { 1, 2, 3, 4, 5 };
+            Assert.IsTrue(array.IsWithin(0));
+            Assert.IsTrue(array.IsWithin(3));
+            Assert.IsTrue(array.IsWithin(4));
+            Assert.IsFalse(array.IsWithin(-1));
+            Assert.IsFalse(array.IsWithin(5));
+        }
+        #endregion
     }
     #endregion
 }

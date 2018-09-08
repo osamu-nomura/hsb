@@ -24,7 +24,7 @@ namespace hsb.Extensions
         /// <param name="defaultValue">デフォルト値</param>
         /// <returns>配列の値</returns>
         public static T Get<T>(this T[] array, int i, T defaultValue)
-            => (array.Length > i && i >= 0) ? array[i] : defaultValue;
+            => array.IsWithin(i) ? array[i] : defaultValue;
         #endregion
 
         #region - Get : 配列より値を取得する(2)
@@ -37,7 +37,19 @@ namespace hsb.Extensions
         /// <param name="generator">添え字が範囲外だった場合に呼ばれるコールバック</param>
         /// <returns>リストの値</returns>
         public static T Get<T>(this T[] array, int i, Func<T> generator)
-            => (array.Length > i && i >= 0) ? array[i] : generator();
+            => array.IsWithin(i) ? array[i] : generator();
+        #endregion
+
+        #region - IsWithin : インデックスが範囲内かどうかチェックする
+        /// <summary>
+        /// インデックスが範囲内かどうかチェックする
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 配列</param>
+        /// <param name="i">インデックス</param>
+        /// <returns>True : 範囲内 / False : 範囲外</returns>
+        public static bool IsWithIn<T>(this T[] array, int i)
+            => array.Length > i && i >= 0;
         #endregion
 
         #endregion

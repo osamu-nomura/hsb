@@ -543,6 +543,32 @@ namespace hsb.Extensions.Tests
             Assert.IsFalse((new DateTime(2018, 8, 2)).IsSameYearMonth(null));
         }
         #endregion
+
+        #region - YesterdayTest
+        /// <summary>
+        /// Test of Yesterday
+        /// </summary>
+        [TestMethod]
+        public void YesterdayTest()
+        {
+            Assert.AreEqual(new DateTime(2018, 9, 8), (new DateTime(2018, 9, 9)).Yesterday());
+            Assert.AreEqual(new DateTime(2000, 2, 29), (new DateTime(2000, 3, 1)).Yesterday());
+            Assert.AreEqual(new DateTime(2017, 12, 31), (new DateTime(2018, 1, 1)).Yesterday());
+        }
+        #endregion
+
+        #region - TomorrowTest
+        /// <summary>
+        /// Test of Tomorrow
+        /// </summary>
+        [TestMethod]
+        public void TomorrowTest()
+        {
+            Assert.AreEqual(new DateTime(2018, 9, 8), (new DateTime(2018, 9, 7)).Tomorrow());
+            Assert.AreEqual(new DateTime(2000, 2, 29), (new DateTime(2000, 2, 28)).Tomorrow());
+            Assert.AreEqual(new DateTime(2019, 1, 1), (new DateTime(2018, 12, 31)).Tomorrow());
+        }
+        #endregion
     }
     #endregion
 }
