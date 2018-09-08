@@ -185,6 +185,11 @@ namespace hsb.Extensions
         }
         #endregion
 
+        #region - Omission : 文字列を指定桁数で省略する
+        public static string Omission(this string s, int length, string safix = "…")
+            => s.Length > length ? string.Format("{0}{1}", s.Substring(0, length - (safix?.Length ?? 0)), safix) : s;
+        #endregion
+
         #endregion
     }
     #endregion

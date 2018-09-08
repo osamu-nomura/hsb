@@ -138,6 +138,20 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual("", "".ReplaceCrLf("<br>"));
         }
         #endregion
+
+        #region - OmissionTest
+        /// <summary>
+        /// Test of Omission
+        /// </summary>
+        [TestMethod()]
+        public void OmissionTest()
+        {
+            Assert.AreEqual("12345", "12345".Omission(5));
+            Assert.AreEqual("123", "123".Omission(5));
+            Assert.AreEqual("1234…", "123456".Omission(5));
+            Assert.AreEqual("12345", "123456".Omission(5, ""));
+        }
+        #endregion
     }
     #endregion
 }
