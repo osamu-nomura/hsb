@@ -80,6 +80,19 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual(new DateTime(2040, 4, 14, 13, 07, 20), 2217989240.UnixTimeToDateTime());
         }
         #endregion
+
+        #region - ToHumanReadableTest
+        /// <summary>
+        /// Test of ToHumanReadable
+        /// </summary>
+        [TestMethod()]
+        public void ToHumanReadableTest()
+        {
+            Assert.AreEqual("1K", 1000.0d.ToHumanReadable(1000.0d));
+            Assert.AreEqual("1.2K", 1229.0d.ToHumanReadable());
+            Assert.AreEqual("1.6M", 1677721.6M.ToHumanReadable());
+        }
+        #endregion
     }
     #endregion
 }
