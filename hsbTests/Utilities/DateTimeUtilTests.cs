@@ -80,6 +80,26 @@ namespace hsb.Utilities.Tests
             Assert.IsNull(DateTimeUtil.Create(2018, 9, 1, 10, 99, 12, 13, new JapaneseCalendar(), DateTimeKind.Local));
         }
         #endregion
+
+        #region - String2DayOfWeekTest 
+        /// <summary>
+        /// Test of String2DayOfWeek
+        /// </summary>
+        [TestMethod()]
+        public void String2DayOfWeekTest()
+        {
+            Assert.AreEqual(DayOfWeek.Monday, DateTimeUtil.String2DayOfWeek("月"));
+            Assert.AreEqual(DayOfWeek.Tuesday, DateTimeUtil.String2DayOfWeek("火"));
+            Assert.AreEqual(DayOfWeek.Wednesday, DateTimeUtil.String2DayOfWeek("水"));
+            Assert.AreEqual(DayOfWeek.Thursday, DateTimeUtil.String2DayOfWeek("木"));
+            Assert.AreEqual(DayOfWeek.Friday, DateTimeUtil.String2DayOfWeek("金"));
+            Assert.AreEqual(DayOfWeek.Saturday, DateTimeUtil.String2DayOfWeek("土"));
+            Assert.AreEqual(DayOfWeek.Sunday, DateTimeUtil.String2DayOfWeek("日"));
+            Assert.AreEqual(DayOfWeek.Monday, DateTimeUtil.String2DayOfWeek("月曜日"));
+            Assert.AreEqual(null, DateTimeUtil.String2DayOfWeek(""));
+            Assert.AreEqual(null, DateTimeUtil.String2DayOfWeek("ああああ"));
+        }
+        #endregion
     }
     #endregion
 }

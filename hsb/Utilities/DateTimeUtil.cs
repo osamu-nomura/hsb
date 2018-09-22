@@ -315,6 +315,31 @@ namespace hsb.Utilities
         }
         #endregion
 
+        #region - String2DayOfWeek : 曜日を示す文字列からDayOfWeekを返す
+        /// <summary>
+        /// 曜日を示す文字列からDayOfWeekを返す
+        /// </summary>
+        /// <param name="s">曜日を示す文字列</param>
+        /// <returns>DayOfWeek?</returns>
+        public static DayOfWeek? String2DayOfWeek(string s)
+        {
+            if (!string.IsNullOrEmpty(s))
+            {
+                switch (s.Substring(0, 1))
+                {
+                    case "月": return DayOfWeek.Monday;
+                    case "火": return DayOfWeek.Tuesday;
+                    case "水": return DayOfWeek.Wednesday;
+                    case "木": return DayOfWeek.Thursday;
+                    case "金": return DayOfWeek.Friday;
+                    case "土": return DayOfWeek.Saturday;
+                    case "日": return DayOfWeek.Sunday;
+                }
+            }
+            return null;
+        }
+        #endregion
+
         #endregion
     }
     #endregion
