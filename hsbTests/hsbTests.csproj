@@ -74,7 +74,6 @@
     <Compile Include="Utilities\EnumUtilTests.cs" />
     <Compile Include="Utilities\EtcUtilTests.cs" />
     <Compile Include="Utilities\KanjiNumeralUtilTests.cs" />
-    <Compile Include="Utilities\MapStringTests.cs" />
     <Compile Include="Utilities\MessageDigestTests.cs" />
   </ItemGroup>
   <ItemGroup>
