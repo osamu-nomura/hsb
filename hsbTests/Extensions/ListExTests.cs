@@ -98,6 +98,18 @@ namespace hsb.Extensions.Tests
             Assert.IsFalse(list.IsWithin(5));
         }
         #endregion
+
+        #region - ChoiceTest
+        [TestMethod()]
+        public void ChoiceTest()
+        {
+            var list = new List<int> { 1, 2, 3, 4, 5 };
+            var n1 = list.Choice();
+            Assert.IsTrue(list.Contains(n1));
+            var n2 = list.Choice(new Random(100));
+            Assert.IsTrue(list.Contains(n2));
+        }
+        #endregion
     }
     #endregion
 }

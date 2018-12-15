@@ -55,6 +55,21 @@ namespace hsb.Extensions.Tests
             Assert.IsFalse(array.IsWithin(5));
         }
         #endregion
+
+        #region - ChoiceTest
+        /// <summary>
+        /// Test of Choice
+        /// </summary>
+        [TestMethod()]
+        public void ChoiceTest()
+        {
+            var array = new int[] { 1, 2, 3, 4, 5 };
+            var n1 = array.Choice();
+            Assert.IsTrue(array.Contains(n1));
+            var n2 = array.Choice(new Random(100));
+            Assert.IsTrue(array.Contains(n2));
+        }
+        #endregion
     }
     #endregion
 }

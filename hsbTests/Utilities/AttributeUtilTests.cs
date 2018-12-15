@@ -32,7 +32,7 @@ namespace hsb.Utilities.Tests
         class TestClass
         {
             [Display(Name = "フィールド1")]
-            public int Field1;
+            public int Field1 = 0;
             [Display(Name = "プロパティ1")]
             public int Property1 { get; set; }
         }

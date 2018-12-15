@@ -63,6 +63,7 @@
     <Compile Include="Extensions\IEnumerableExTests.cs" />
     <Compile Include="Extensions\ListExTests.cs" />
     <Compile Include="Extensions\NumericExTests.cs" />
+    <Compile Include="Extensions\RandomExTests.cs" />
     <Compile Include="Extensions\RegexExTests.cs" />
     <Compile Include="Extensions\MonthExTests.cs" />
     <Compile Include="Extensions\StringExTests.cs" />

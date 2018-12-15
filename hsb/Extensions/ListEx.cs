@@ -99,6 +99,18 @@ namespace hsb.Extensions
             => list.Count > i && i >= 0;
         #endregion
 
+        #region - Choice : リストより要素をランダムに取得する
+        /// <summary>
+        /// リストより値をランダムに取得する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="list">this リスト</param>
+        /// <param name="r">Randomオブジェクト</param>
+        /// <returns>ランダムに選択されたリストの要素</returns>
+        public static T Choice<T>(this IList<T> list, Random r = null)
+            => list[(r ?? new Random()).Next(list.Count)];
+        #endregion
+
         #endregion
     }
     #endregion

@@ -53,6 +53,7 @@
     <Compile Include="Extensions\DictionaryEx.cs" />
     <Compile Include="Extensions\ListEx.cs" />
     <Compile Include="Extensions\NumericEx.cs" />
+    <Compile Include="Extensions\RandomEx.cs" />
     <Compile Include="Extensions\RegexEx.cs" />
     <Compile Include="Extensions\MonthEx.cs" />
     <Compile Include="Extensions\DateTimeEx.cs" />

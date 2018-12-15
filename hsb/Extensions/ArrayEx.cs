@@ -52,6 +52,18 @@ namespace hsb.Extensions
             => array.Length > i && i >= 0;
         #endregion
 
+        #region - Choice : 配列より要素をランダムに取得する
+        /// <summary>
+        /// 配列より要素をランダムに取得する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 配列</param>
+        /// <param name="r">Randomクラスのインスタンス</param>
+        /// <returns>ランダムに選択された配列の要素</returns>
+        public static T Choice<T>(this T[] array, Random r = null)
+            => array[(r ?? new Random()).Next(array.Length )];
+        #endregion
+
         #endregion
     }
     #endregion
