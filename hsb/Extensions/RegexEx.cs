@@ -23,9 +23,7 @@ namespace hsb.Extensions
         /// <param name="matches">this MatchCollection</param>
         /// <returns>IEnumerable<Match></returns>
         public static IEnumerable<Match> GetGenericEnumerator(this MatchCollection matches)
-        {
-            return matches.Cast<Match>();
-        }
+            => matches.Cast<Match>();
         #endregion
 
         #region - ToList : MatchCollectionをMatchのリストに変換する
@@ -35,9 +33,7 @@ namespace hsb.Extensions
         /// <param name="matches">this MatchCollection</param>
         /// <returns>Matchのリスト</returns>
         public static List<Match> ToList(this MatchCollection matches)
-        {
-            return matches.GetGenericEnumerator().ToList();
-        }
+            => matches.GetGenericEnumerator().ToList();
         #endregion
 
         #region - ToArray : MatchCollectionをMatchの配列に変換する
@@ -47,9 +43,7 @@ namespace hsb.Extensions
         /// <param name="matches">this MatchCollection</param>
         /// <returns>Matchの配列</returns>
         public static Match[] ToArray(this MatchCollection matches)
-        {
-            return matches.GetGenericEnumerator().ToArray();
-        }
+            => matches.GetGenericEnumerator().ToArray();
         #endregion
 
         #endregion
