@@ -89,8 +89,8 @@ namespace hsb.Utilities
             {
                 var floor = KanjiNumeralUtil.Convert(m.Groups[3].Value);
                 var suffix = m.Groups[4].Value;
-                suffix = (suffix == "階" || suffix == "F" || suffix == "Ｆ") ?
-                            "階" : "号室";
+                if (suffix == "階" || suffix == "F" || suffix == "Ｆ")
+                    suffix =  "階";
                 return $"{m.Groups[1].Value.Trim()}{floor}{suffix}";
             }
             return name.Trim();
@@ -121,7 +121,6 @@ namespace hsb.Utilities
             return ("", address.Trim());
         }
         #endregion
-
 
         #endregion
 
