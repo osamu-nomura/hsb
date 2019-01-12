@@ -61,6 +61,7 @@
     <Compile Include="Extensions\StringEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Enums.cs" />
+    <Compile Include="Utilities\AddressUtil.cs" />
     <Compile Include="Utilities\AttributeUtil.cs" />
     <Compile Include="Utilities\ConditionUtil.cs" />
     <Compile Include="Utilities\Constants.cs" />

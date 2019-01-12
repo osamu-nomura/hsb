@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace hsb.Utilities
 {
-    #region 【Class : ConditionUtil】
+    #region 【Static Class : ConditionUtil】
     /// <summary>
     /// 条件関連ユーティリティ
     /// </summary>
