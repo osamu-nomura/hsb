@@ -134,6 +134,28 @@ namespace hsb.Extensions
             return string.Format("{0}{1}", Regex.Replace(n.ToString("#,##0.0"), @"\.0$", ""), units[i]);
         }
         #endregion
+
+        #region - RadianToDegree : 値をラジアンとして度を返す
+        /// <summary>
+        /// 値をラジアンとして度を返す
+        /// </summary>
+        /// <param name="num">this 値（ラジアン）</param>
+        /// <returns>度数</returns>
+        public static double RadianToDegree(this double num) => num * (180.0d / Math.PI);
+        public static double RadianToDegree(this float num) => num * (180.0f / Math.PI);
+        public static decimal RadianToDegree(this decimal num) => num * (180.0m / (decimal)Math.PI);
+        #endregion
+
+        #region - DegreeToRadian : 値を度としてラジアンを返す
+        /// <summary>
+        /// 値を度としてラジアンを返す
+        /// </summary>
+        /// <param name="num">this 値（度）</param>
+        /// <returns>ラジアン</returns>
+        public static double DegreeToRadian(this double num) => num * (Math.PI / 180.0d);
+        public static double DegreeToRadian(this float num) => num * (Math.PI / 180.0d);
+        public static decimal DegreeToRadian(this decimal num) => num * ((decimal)Math.PI / 180.0m);
+        #endregion
     }
     #endregion
 }
