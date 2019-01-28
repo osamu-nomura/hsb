@@ -197,6 +197,51 @@ namespace hsb.Extensions
             => s.Length > length ? string.Format("{0}{1}", s.Substring(0, length - (safix?.Length ?? 0)), safix) : s;
         #endregion
 
+        #region - ToBase64String : 文字列をBASE64でエンコードする
+        /// <summary>
+        /// 文字列をBASE64でエンコードする
+        /// </summary>
+        /// <param name="s">this : 文字列</param>
+        /// <returns>BASE64にエンコードした文字列</returns>
+        public static string ToBase64String(this string s)
+            => string.IsNullOrEmpty(s) ? s : Convert.ToBase64String(Encoding.UTF8.GetBytes(s));
+        #endregion
+
+        #region - ToBase64UrlString : 文字列をBASE64URLでエンコードする
+        /// <summary>
+        /// 文字列をBASE64URLでエンコードする
+        /// </summary>
+        /// <param name="s">this : 文字列</param>
+        /// <returns>BASE64URLにエンコードした文字列</returns>
+        public static string ToBase64UrlString(this string s)
+            => string.IsNullOrEmpty(s) ? s : s.ToBase64String().TrimEnd('#').Replace('+', '-').Replace('/', '_');
+        #endregion
+
+        #region - DecodeBase64String : BASE64でエンコードされた文字列をデコードする
+        /// <summary>
+        /// BASE64でエンコードされた文字列をデコードする
+        /// </summary>
+        /// <param name="s">this : 文字列</param>
+        /// <returns>バイト配列</returns>
+        public static byte[] DecodeBase64String(this string s)
+            => EtcUtil.SafeExecute(() => Convert.FromBase64String(s), (byte[])null).Value;
+        #endregion
+
+        #region - DecodeBase64UrlString : BASE64URLでエンコードされた文字列をデコードする
+        /// <summary>
+        /// BASE64URLでエンコードされた文字列をデコードする
+        /// </summary>
+        /// <param name="s">this: 文字列</param>
+        /// <returns>バイト配列</returns>
+        public static byte[] DecodeBase64UrlString(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return null;
+            var padding = new string('#', (s.Length % 4 != 0) ? 4 - (s.Length % 4) : 0);
+            return (s + padding).Replace('_', '/').Replace('-', '+').DecodeBase64String();
+        }
+        #endregion
+
         #endregion
     }
     #endregion

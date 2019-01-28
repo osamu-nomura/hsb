@@ -152,6 +152,17 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual("12345", "123456".Omission(5, ""));
         }
         #endregion
+
+        #region - ToBase64StringTest
+        /// <summary>
+        /// Test of ToBase64String
+        /// </summary>
+        [TestMethod()]
+        public void ToBase64StringTest()
+        {
+            Assert.Fail();
+        }
+        #endregion
     }
     #endregion
 }
