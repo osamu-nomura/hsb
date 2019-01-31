@@ -214,7 +214,7 @@ namespace hsb.Extensions
         /// <param name="s">this : 文字列</param>
         /// <returns>BASE64URLにエンコードした文字列</returns>
         public static string ToBase64UrlString(this string s)
-            => string.IsNullOrEmpty(s) ? s : s.ToBase64String().TrimEnd('#').Replace('+', '-').Replace('/', '_');
+            => string.IsNullOrEmpty(s) ? s : s.ToBase64String().TrimEnd('=').Replace('+', '-').Replace('/', '_');
         #endregion
 
         #region - DecodeBase64String : BASE64でエンコードされた文字列をデコードする
@@ -237,7 +237,7 @@ namespace hsb.Extensions
         {
             if (string.IsNullOrEmpty(s))
                 return null;
-            var padding = new string('#', (s.Length % 4 != 0) ? 4 - (s.Length % 4) : 0);
+            var padding = new string('=', (s.Length % 4 != 0) ? 4 - (s.Length % 4) : 0);
             return (s + padding).Replace('_', '/').Replace('-', '+').DecodeBase64String();
         }
         #endregion

@@ -160,9 +160,45 @@ namespace hsb.Extensions.Tests
         [TestMethod()]
         public void ToBase64StringTest()
         {
-            Assert.Fail();
+            Assert.AreEqual("HOGE FUGA".ToBase64String(), "SE9HRSBGVUdB");
         }
         #endregion
+
+        #region - ToDecodeBase64StringTest
+        /// <summary>
+        /// Test of ToDecodeBase64String
+        /// </summary>
+        [TestMethod()]
+        public void ToDecodeBase64StringTest()
+        {
+            var decoded = Encoding.UTF8.GetString("SE9HRSBGVUdB".DecodeBase64String());
+            Assert.AreEqual("HOGE FUGA", decoded);
+        }
+        #endregion
+
+        #region - ToBase64UrlStringTest
+        /// <summary>
+        /// Test of ToBase64UrlString
+        /// </summary>
+        [TestMethod()]
+        public void ToBase64UrlStringTest()
+        {
+            Assert.AreEqual("HOGE FUGA AAA".ToBase64UrlString(), "SE9HRSBGVUdBIEFBQQ");
+        }
+        #endregion
+
+        #region - ToDecodeBase64UrlStringTest
+        /// <summary>
+        /// Test of ToDecodeBase64UrlString
+        /// </summary>
+        [TestMethod()]
+        public void ToDecodeBase64UrlStringTest()
+        {
+            var decoded = Encoding.UTF8.GetString("SE9HRSBGVUdBIEFBQQ".DecodeBase64UrlString());
+            Assert.AreEqual("HOGE FUGA AAA", decoded);
+        }
+        #endregion
+
     }
     #endregion
 }
