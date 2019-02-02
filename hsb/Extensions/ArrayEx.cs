@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using hsb.Classes;
 
 namespace hsb.Extensions
 {
@@ -62,6 +64,100 @@ namespace hsb.Extensions
         /// <returns>ランダムに選択された配列の要素</returns>
         public static T Choice<T>(this T[] array, Random r = null)
             => array[(r ?? new Random()).Next(array.Length )];
+        #endregion
+
+        #region - Choice : 2次元配列より要素をランダムに取得する
+        /// <summary>
+        /// 2次元配列より要素をランダムに取得する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 2次元配列</param>
+        /// <param name="r">Randomクラスのインスタンス</param>
+        /// <returns>ランダムに選択された配列の要素</returns>
+        public static T Choice<T>(this T[,] array, Random r = null)
+        {
+            r = r ?? new Random();
+            return array[r.Next(array.GetLength(0)), r.Next(array.GetLength(1))];
+        }
+        #endregion
+
+        #region - Rows : 2次元配列から行を取得する
+        /// <summary>
+        /// 2次元配列から行を取得する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 2次元配列</param>
+        /// <param name="rowIndex">行インデックス</param>
+        /// <returns>行オブジェクト</returns>
+        public static SquareArrayRow<T> Rows<T>(this T[,] array, int rowIndex)
+        {
+            if (rowIndex < 0 || array.GetLength(0) <= rowIndex)
+                throw new IndexOutOfRangeException();
+            return new SquareArrayRow<T>(array, rowIndex);
+        }
+        #endregion
+
+        #region - Rows : 2次元配列から行を列挙する
+        /// <summary>
+        /// 2次元配列から行を列挙する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 2次元配列</param>
+        /// <returns>行オブジェクトの列挙子</returns>
+        public static IEnumerable<SquareArrayRow<T>> Rows<T>(this T[,] array)
+        {
+            for (var row = 0; row < array.GetLength(0); row++)
+                yield return array.Rows(row);
+        }
+        #endregion
+
+        #region - Cols : 2次元配列から列を取得する
+        /// <summary>
+        /// 2次元配列から列を取得する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 2次元配列</param>
+        /// <param name="colIndex">列インデックス</param>
+        /// <returns>行オブジェクト</returns>
+        public static SquareArrayColumn<T> Cols<T>(this T[,] array, int colIndex)
+        {
+            if (colIndex < 0 || array.GetLength(1) <= colIndex)
+                throw new IndexOutOfRangeException();
+            return new SquareArrayColumn<T>(array, colIndex);
+        }
+        #endregion
+
+        #region - Cols : 2次元配列から列を列挙する
+        /// <summary>
+        /// 2次元配列から列を列挙する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">this 2次元配列</param>
+        /// <returns>行オブジェクトの列挙子</returns>
+        public static IEnumerable<SquareArrayColumn<T>> Cols<T>(this T[,] array)
+        {
+            for (var col = 0; col < array.GetLength(1); col++)
+                yield return array.Cols(col);
+        }
+        #endregion
+
+        #region - Flatten : 2次元配列をまとめて列挙する
+        /// <summary>
+        /// 2次元配列をまとめて列挙する
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">2次元配列</param>
+        /// <returns>列挙子</returns>
+        public static IEnumerable<T> Flatten<T>(this T[,] array)
+        {
+            foreach (var row in array.Rows())
+            {
+                foreach (var cell in row)
+                {
+                    yield return cell;
+                }
+            }
+        }
         #endregion
 
         #endregion

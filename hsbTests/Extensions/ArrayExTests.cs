@@ -68,6 +68,96 @@ namespace hsb.Extensions.Tests
             Assert.IsTrue(array.Contains(n1));
             var n2 = array.Choice(new Random(100));
             Assert.IsTrue(array.Contains(n2));
+
+            var array2 = new int[,]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+            };
+            var n3 = array2.Choice();
+            Assert.IsTrue(array2.Flatten().Contains(n3));
+            var n4 = array2.Choice(new Random(100));
+            Assert.IsTrue(array2.Flatten().Contains(n4));
+        }
+        #endregion
+
+        #region - RowsTest
+        /// <summary>
+        /// Test of Rows
+        /// </summary>
+        [TestMethod()]
+        public void RowsTest()
+        {
+            var array = new int[,]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+            };
+            var row = array.Rows(1);
+
+            Assert.AreEqual(row.Length, 3);
+            Assert.AreEqual(row[0], 4);
+            Assert.AreEqual(row[1], 5);
+            Assert.AreEqual(row[2], 6);
+
+            var rowArray = row.ToArray();
+            Assert.AreEqual(rowArray.Length, 3);
+            Assert.AreEqual(rowArray[0], 4);
+            Assert.AreEqual(rowArray[1], 5);
+            Assert.AreEqual(rowArray[2], 6);
+
+            Assert.AreEqual(array.Rows().Sum(r => r.Sum()), 45);
+        }
+        #endregion
+
+        #region - ColsTest
+        /// <summary>
+        /// Test of Cols
+        /// </summary>
+        [TestMethod()]
+        public void ColsTest()
+        {
+            var array = new int[,]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+            };
+            var col = array.Cols(1);
+
+            Assert.AreEqual(col.Length, 3);
+            Assert.AreEqual(col[0], 2);
+            Assert.AreEqual(col[1], 5);
+            Assert.AreEqual(col[2], 8);
+
+            var colArray = col.ToArray();
+            Assert.AreEqual(colArray.Length, 3);
+            Assert.AreEqual(colArray[0], 2);
+            Assert.AreEqual(colArray[1], 5);
+            Assert.AreEqual(colArray[2], 8);
+
+            Assert.AreEqual(array.Cols().Sum(r => r.Sum()), 45);
+
+        }
+        #endregion
+
+        #region - FlattenTest
+        /// <summary>
+        /// Test of Flatten
+        /// </summary>
+        [TestMethod()]
+        public void FlattenTest()
+        {
+            var array = new int[,]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+            };
+            var array2 = array.Flatten().ToArray();
+            Assert.IsTrue(array2.SequenceEqual(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
         }
         #endregion
     }
