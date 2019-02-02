@@ -12,13 +12,6 @@ namespace hsb.Classes
     {
         #region ■ Members
 
-        #region - _sum : 全確率の合計値
-        /// <summary>
-        /// 全確率の合計値
-        /// </summary>
-        private int _sum = 0;
-        #endregion
-
         #region - _r : 乱数発生器
         /// <summary>
         /// 乱数発生器
@@ -35,6 +28,16 @@ namespace hsb.Classes
         /// 確率リスト
         /// </summary>
         public List<(T item, int ratio)> Probabilities { get; set; }
+        #endregion
+
+        #region - Sum : 確率合計
+        /// <summary>
+        /// 確率合計
+        /// </summary>
+        public int Sum
+        {
+            get => Probabilities.Sum(t => t.ratio);
+        }
         #endregion
 
         #endregion
@@ -58,7 +61,6 @@ namespace hsb.Classes
         public Probability(IEnumerable<(T item, int ratio)> probabilities) : this()
         {
             Probabilities = new List<(T item, int ratio)>(probabilities);
-            _sum = Probabilities.Sum(t => t.ratio);
         }
         #endregion
 
@@ -73,7 +75,7 @@ namespace hsb.Classes
         /// <returns>確率に応じた値</returns>
         public T Next()
         {
-            var n = _r.Next(_sum);
+            var n = _r.Next(Sum);
             foreach(var t in Probabilities)
             {
                 if (n < t.ratio)
