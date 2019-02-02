@@ -34,10 +34,7 @@ namespace hsb.Classes
         /// <summary>
         /// 確率合計
         /// </summary>
-        public int Sum
-        {
-            get => Probabilities.Sum(t => t.ratio);
-        }
+        public int Sum => Probabilities.Sum(t => t.ratio);
         #endregion
 
         #endregion
