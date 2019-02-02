@@ -84,6 +84,20 @@ namespace hsb.Classes
         #endregion
 
         #endregion
+
+        #region ■ Static Methods
+
+        #region - GetValue : 指定した確率で値を返す
+        /// <summary>
+        /// 指定した確率で値を返す
+        /// </summary>
+        /// <param name="probabilities">k確率リスト</param>
+        /// <returns>値</returns>
+        public static T GetValue(IEnumerable<(T item, int ratio)> probabilities)
+            => (new Probability<T>(probabilities)).Next();
+        #endregion
+
+        #endregion
     }
     #endregion
 }

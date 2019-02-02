@@ -39,6 +39,21 @@ namespace hsb.Classes.Tests
             Assert.IsTrue(true);
         }
         #endregion
+
+        #region - GetValueTest
+        /// <summary>
+        /// Test of GetValue
+        /// </summary>
+        [TestMethod()]
+        public void GetValueTest()
+        {
+            var ret = Probability<bool>.GetValue(new (bool item, int ratio)[]
+            {
+                (true, 50), (false, 50)
+            });
+            Assert.IsTrue(true);
+        }
+        #endregion
     }
     #endregion
 }
