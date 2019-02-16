@@ -6,6 +6,8 @@ using System.Net.Mail;
 using System.Text;
 using hsb.Utilities;
 
+using static hsb.Utilities.Constants;
+
 namespace hsb.Extensions
 {
     #region 【Static Class : StringEx】
@@ -239,6 +241,57 @@ namespace hsb.Extensions
                 return null;
             var padding = new string('=', (s.Length % 4 != 0) ? 4 - (s.Length % 4) : 0);
             return (s + padding).Replace('_', '/').Replace('-', '+').DecodeBase64String();
+        }
+        #endregion
+
+        #region - ToZenkakuKatakana : 半角カタカナを全角カタカナに変換する
+        /// <summary>
+        /// 半角カタカナを全角カタカナに変換する
+        /// </summary>
+        /// <param name="s">this : 文字列</param>
+        /// <returns>半角カタカナが全角カタカナに変換された文字列</returns>
+        public static string ToZenkakuKatakana(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return s;
+            foreach(var (hankaku, zenkaku) in HANKAKU_ZENKAKU_KANA_CHARS)
+            {
+                s = s.Replace(hankaku, zenkaku);
+            }
+            return s;
+        }
+        #endregion
+
+        #region - ToHankakuAlphaNum : 全角英数を半角に変換する
+        /// <summary>
+        /// 全角英数を半角に変換する
+        /// ※記号はそのまま
+        /// </summary>
+        /// <param name="s">this : 文字列</param>
+        /// <returns>全角英数が半角に変換された文字列</returns>
+        public static string ToHankakuAlphaNum(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return s;
+            return System.Text.RegularExpressions.Regex.Replace(s, @"[Ａ-Ｚａ-ｚ０-９]",
+                m => ((char)(m.Value[0] - 0xFEE0)).ToString());
+        }
+        #endregion
+
+        #region - ToHankakuAlphaNumSymbol : 全角英数記号を半角に変換する
+        /// <summary>
+        /// 全角英数記号を半角に変換する
+        /// </summary>
+        /// <param name="s">this : 文字列</param>
+        /// <returns>全角英数記号を半角に変換した文字列</returns>
+        public static string ToHankakuAlphaNumSymbol(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return s;
+            return System.Text.RegularExpressions.Regex.Replace(s, @"[！-～]",
+                m => ((char)(m.Value[0] - 0xFEE0)).ToString())
+                .Replace("”", "\"").Replace("’", "'").Replace("￥", "\\")
+                .Replace("　", " ");
         }
         #endregion
 

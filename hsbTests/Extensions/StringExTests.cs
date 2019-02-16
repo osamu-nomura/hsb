@@ -199,6 +199,41 @@ namespace hsb.Extensions.Tests
         }
         #endregion
 
+        #region - ToZenkakuKatakanaTest
+        /// <summary>
+        /// Test of ToZenkakuKatakana
+        /// </summary>
+        [TestMethod]
+        public void ToZenkakuKatakanaTest()
+        {
+            Assert.AreEqual("ｳﾞｪﾙｻｲﾕ宮殿".ToZenkakuKatakana(), "ヴェルサイユ宮殿");
+            Assert.AreEqual("｢ﾊﾝｶｸ｣､".ToZenkakuKatakana(), "「ハンカク」、");
+        }
+        #endregion
+
+        #region - ToHankakuAlphaNumTest
+        /// <summary>
+        /// Test of ToHankakuAlphaNum
+        /// </summary>
+        [TestMethod]
+        public void ToHankakuAlphaNumTest()
+        {
+            Assert.AreEqual("０１２３４５６７８９アアア．：".ToHankakuAlphaNum(), "0123456789アアア．：");
+            Assert.AreEqual("ＡＢＣＤＥＦＧ　ｈｉｊｋｌｍｎ".ToHankakuAlphaNum(), "ABCDEFG　hijklmn");
+        }
+        #endregion
+
+        #region - ToHankakuAlphaNumSymbolTest
+        /// <summary>
+        /// Test of ToHankakuAlphaNumSymbol
+        /// </summary>
+        [TestMethod]
+        public void ToHankakuAlphaNumSymbolTest()
+        {
+            Assert.AreEqual("０１２３４５６７８９アアア．：".ToHankakuAlphaNumSymbol(), "0123456789アアア.:");
+            Assert.AreEqual("ＡＢＣＤＥＦＧ　ｈｉｊｋｌｍｎ".ToHankakuAlphaNumSymbol(), "ABCDEFG hijklmn");
+        }
+        #endregion
     }
     #endregion
 }

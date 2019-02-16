@@ -91,7 +91,7 @@ namespace hsb.Utilities
                 var suffix = m.Groups[4].Value;
                 if (suffix == "階" || suffix == "F" || suffix == "Ｆ")
                     suffix =  "階";
-                return $"{m.Groups[1].Value.Trim()}{floor}{suffix}";
+                return $"{m.Groups[1].Value.Trim()} {floor}{suffix}";
             }
             return name.Trim();
         }
@@ -138,6 +138,8 @@ namespace hsb.Utilities
             var city = "";
             var address = "";
             var building = "";
+
+            addr = addr.ToZenkakuKatakana().ToHankakuAlphaNum();
 
             (prefecture, addr) = GetPrefecture(addr);
             (city, addr) = GetCity(addr);

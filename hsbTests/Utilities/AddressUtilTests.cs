@@ -36,20 +36,20 @@ namespace hsb.Utilities.Tests
             Assert.AreEqual(ret2.Building, "");
 
             // Test3
-            var addr3 = "東京都港区港南 2-16-3 品川グランドセントラルタワー 32F";
+            var addr3 = "東京都港区港南 2-16-3 品川ｸﾞﾗﾝﾄﾞｾﾝﾄﾗﾙﾀﾜｰ 32F";
             var ret3 = AddressUtil.Normalize(addr3);
             Assert.AreEqual(ret3.Prefecture, "東京都");
             Assert.AreEqual(ret3.City, "港区");
             Assert.AreEqual(ret3.Address, "港南2-16-3");
-            Assert.AreEqual(ret3.Building, "品川グランドセントラルタワー32階");
+            Assert.AreEqual(ret3.Building, "品川グランドセントラルタワー 32階");
 
             // Test4
-            var addr4 = "東京都八王子市東町3番11号プレイム八王子ビル三〇一号室";
+            var addr4 = "東京都八王子市東町3番11号プレイム八王子ＢＬＤ２１　三〇一号室";
             var ret4 = AddressUtil.Normalize(addr4);
             Assert.AreEqual(ret4.Prefecture, "東京都");
             Assert.AreEqual(ret4.City, "八王子市東町");
             Assert.AreEqual(ret4.Address, "3-11");
-            Assert.AreEqual(ret4.Building, "プレイム八王子ビル301号室");
+            Assert.AreEqual(ret4.Building, "プレイム八王子BLD21 301号室");
         }
         #endregion
     }
