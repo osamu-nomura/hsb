@@ -66,6 +66,7 @@
     <Compile Include="Types\Enums.cs" />
     <Compile Include="Utilities\AddressUtil.cs" />
     <Compile Include="Utilities\AttributeUtil.cs" />
+    <Compile Include="Utilities\CalculatorUtil.cs" />
     <Compile Include="Utilities\ConditionUtil.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\DateTimeUtil.cs" />
