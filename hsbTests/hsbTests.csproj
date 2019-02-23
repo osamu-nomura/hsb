@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\AddressUtilTests.cs" />
     <Compile Include="Utilities\AttributeUtilTests.cs" />
+    <Compile Include="Utilities\CalculatorUtilTests.cs" />
     <Compile Include="Utilities\ConditionUtilTests.cs" />
     <Compile Include="Utilities\DateTimeUtilTests.cs" />
     <Compile Include="Utilities\EnumerableUtilTests.cs" />
