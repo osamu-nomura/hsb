@@ -62,6 +62,115 @@ namespace hsb.Extensions
         }
         #endregion
 
+        #region - Next2 : ランダムな整数を要素2個のタプルで返す
+        /// <summary>
+        /// ランダムな整数を要素2個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int) Next2(this Random r)
+            => (r.Next(), r.Next());
+        /// <summary>
+        /// ランダムな整数を要素2個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int) Next2(this Random r, int maxValue)
+            => (r.Next(maxValue), r.Next(maxValue));
+        /// <summary>
+        /// ランダムな整数を要素2個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="minValue">最小値</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int) Next2(this Random r, int minValue, int maxValue)
+            => (r.Next(minValue, maxValue), r.Next(minValue, maxValue));
+        #endregion
+
+        #region - Next3 : ランダムな整数を要素3個のタプルで返す
+        /// <summary>
+        /// ランダムな整数を要素3個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int) Next3(this Random r)
+            => (r.Next(), r.Next(), r.Next());
+        /// <summary>
+        /// ランダムな整数を要素3個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int) Next3(this Random r, int maxValue)
+            => (r.Next(maxValue), r.Next(maxValue), r.Next(maxValue));
+        /// <summary>
+        /// ランダムな整数を要素3個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="minValue">最小値</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int) Next3(this Random r, int minValue, int maxValue)
+            => (r.Next(minValue, maxValue), r.Next(minValue, maxValue), r.Next(minValue, maxValue));
+        #endregion
+
+        #region - Next4 : ランダムな整数を要素4個のタプルで返す
+        /// <summary>
+        /// ランダムな整数を要素4個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int, int) Next4(this Random r)
+            => (r.Next(), r.Next(), r.Next(), r.Next());
+        /// <summary>
+        /// ランダムな整数を要素4個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int, int) Next4(this Random r, int maxValue)
+            => (r.Next(maxValue), r.Next(maxValue), r.Next(maxValue), r.Next(maxValue));
+        /// <summary>
+        /// ランダムな整数を要素4個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="minValue">最小値</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int, int) Next4(this Random r, int minValue, int maxValue)
+            => (r.Next(minValue, maxValue), r.Next(minValue, maxValue), r.Next(minValue, maxValue), r.Next(minValue, maxValue));
+        #endregion
+
+        #region - Next5 : ランダムな整数を要素5個のタプルで返す
+        /// <summary>
+        /// ランダムな整数を要素5個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int, int, int) Next5(this Random r)
+            => (r.Next(), r.Next(), r.Next(), r.Next(), r.Next());
+        /// <summary>
+        /// ランダムな整数を要素5個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int, int, int) Next5(this Random r, int maxValue)
+            => (r.Next(maxValue), r.Next(maxValue), r.Next(maxValue), r.Next(maxValue), r.Next(maxValue));
+        /// <summary>
+        /// ランダムな整数を要素5個のタプルで返す
+        /// </summary>
+        /// <param name="r">this Randomオブジェクト</param>
+        /// <param name="minValue">最小値</param>
+        /// <param name="maxValue">最大値</param>
+        /// <returns>乱数値のタプル</returns>
+        public static (int, int, int, int, int) Next5(this Random r, int minValue, int maxValue)
+            => (r.Next(minValue, maxValue), r.Next(minValue, maxValue), r.Next(minValue, maxValue),
+                r.Next(minValue, maxValue), r.Next(minValue, maxValue));
+        #endregion
+
         #endregion
     }
     #endregion
