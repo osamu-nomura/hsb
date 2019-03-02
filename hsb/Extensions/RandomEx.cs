@@ -21,7 +21,7 @@ namespace hsb.Extensions
         /// <param name="r">this Randomオブジェクト</param>
         /// <returns>ランダムな真偽値</returns>
         public static bool NextBool(this Random r)
-            => r.Next(1) == 0;
+            => r.Next(2) == 0;
         #endregion
 
         #region - Sequence : ランダムな値を列挙する
