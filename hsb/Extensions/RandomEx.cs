@@ -24,6 +24,17 @@ namespace hsb.Extensions
             => r.Next(2) == 0;
         #endregion
 
+        #region - NextBool : 指定の確率で真を返す
+        /// <summary>
+        /// 指定の確率で真を返す
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="probability">確率(パーセント)</param>
+        /// <returns>指定した確率で真を返す真偽値</returns>
+        public static bool NextBool(this Random r, int probability)
+            => r.Next(100) < probability;
+        #endregion
+
         #region - Sequence : ランダムな値を列挙する
         /// <summary>
         /// ランダムな値を列挙する
