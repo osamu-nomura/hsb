@@ -41,10 +41,24 @@ namespace hsb.Types
     public enum Quarter { First = 1, Second = 2, Third = 3, Fourth =  4 }
     #endregion
 
-    #region - Sex : 性別
+    #region 【Enum : Sex】
     /// <summary>
     /// 性別
     /// </summary>
     public enum Sex { Unkown = 0, Male = 1, Female = 2, Other = 9 }
+    #endregion
+
+    #region 【Enum : SquareDirection】
+    /// <summary>
+    /// 2次元方向
+    /// </summary>
+    public enum SquareDirection { Row = 0, Column = 1 }
+    #endregion
+
+    #region - 【Enum : RotateDirection】
+    /// <summary>
+    /// 回転方向
+    /// </summary>
+    public enum RotateDirection { Right = 0, Left = 1}
     #endregion
 }

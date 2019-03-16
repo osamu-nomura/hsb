@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using hsb.Classes;
+using hsb.Types;
 
 namespace hsb.Extensions
 {
@@ -147,16 +148,83 @@ namespace hsb.Extensions
         /// </summary>
         /// <typeparam name="T">型パラメータ</typeparam>
         /// <param name="array">2次元配列</param>
+        /// <param name="direction">方向</param>
         /// <returns>列挙子</returns>
-        public static IEnumerable<T> Flatten<T>(this T[,] array)
+        public static IEnumerable<T> Flatten<T>(this T[,] array, SquareDirection direction = SquareDirection.Row)
         {
-            foreach (var row in array.Rows())
+            IEnumerable<T> rowDirection()
             {
-                foreach (var cell in row)
+                for (var row = 0; row < array.GetLength(0); row++)
                 {
-                    yield return cell;
+                    for (var col = 0; col < array.GetLength(1); col++)
+                    {
+                        yield return array[row, col];
+                    }
                 }
             }
+
+            IEnumerable<T> colDirection()
+            {
+                for (var col = 0; col < array.GetLength(1); col++)
+                {
+                    for (var row = 0; row < array.GetLength(0); row++)
+                    {
+                        yield return array[row, col];
+                    }
+                }
+            }
+
+            if (direction == SquareDirection.Row)
+                return rowDirection();
+            else
+                return colDirection();
+        }
+        #endregion
+
+        #region - Rotate : 2次元配列を回転させた配列を返す
+        /// <summary>
+        /// 2次元配列を回転させた配列を返す
+        /// </summary>
+        /// <typeparam name="T">型パラメータ</typeparam>
+        /// <param name="array">配列</param>
+        /// <param name="direction">回転方向</param>
+        /// <returns>配列</returns>
+        public static T[,] Rotate<T>(this T[,] array, RotateDirection direction = RotateDirection.Right) where T: new()
+        {
+            T[,] RightDirection()
+            {
+                var result = new T[array.GetLength(1), array.GetLength(0)];
+                var r = 0;
+                for (var row = array.GetLength(0) - 1; row >= 0; row--)
+                {
+                    for (var col = 0; col < array.GetLength(1); col++)
+                    {
+                        result[col, r] = array[row, col];
+                    }
+                    r++;
+                }
+                return result;
+            }
+
+            T[,] LeftDirection()
+            {
+                var result = new T[array.GetLength(1), array.GetLength(0)];
+                var c = 0;
+                for (var col = array.GetLength(1) - 1; col >= 0; col--)
+                {
+                    for (var row = 0; row < array.GetLength(0); row++)
+                    {
+                        result[c, row] = array[row, col];
+                    }
+                    c++;
+                }
+                return result;
+            }
+
+            if (direction == RotateDirection.Right)
+                return RightDirection();
+            else
+                return LeftDirection();
         }
         #endregion
 

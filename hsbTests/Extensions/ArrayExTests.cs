@@ -158,6 +158,29 @@ namespace hsb.Extensions.Tests
             };
             var array2 = array.Flatten().ToArray();
             Assert.IsTrue(array2.SequenceEqual(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
+
+            var array3 = array.Flatten(Types.SquareDirection.Column).ToArray();
+            Assert.IsTrue(array3.SequenceEqual(new int[] { 1, 4, 7, 2, 5, 8, 3, 6, 9 }));
+        }
+        #endregion
+
+        #region - RotateTest
+        /// <summary>
+        /// Test of Rotate
+        /// </summary>
+        [TestMethod()]
+        public void RotateTest()
+        {
+            var array = new int[,]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+            };
+            var rightRotateArray = array.Rotate().Flatten().ToArray();
+            Assert.IsTrue(rightRotateArray.SequenceEqual(new int[] { 7, 4, 1, 8, 5, 2, 9, 6, 3 }));
+            var leftRotateArray = array.Rotate(Types.RotateDirection.Left).Flatten().ToArray();
+            Assert.IsTrue(leftRotateArray.SequenceEqual(new int[] { 3, 6, 9, 2, 5, 8, 1, 4, 7 }));
         }
         #endregion
     }
