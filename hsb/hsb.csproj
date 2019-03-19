@@ -60,6 +60,7 @@
     <Compile Include="Extensions\DateTimeEx.cs" />
     <Compile Include="Extensions\IEnumerableEx.cs" />
     <Compile Include="Extensions\StringEx.cs" />
+    <Compile Include="Extensions\TypeEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Enums.cs" />
     <Compile Include="Utilities\AddressUtil.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Utilities\MailUtil.cs" />
     <Compile Include="Utilities\EtcUtil.cs" />
     <Compile Include="Utilities\MessageDigest.cs" />
+    <Compile Include="Utilities\POCOUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

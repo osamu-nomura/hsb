@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace hsb.Utilities.Tests
 {
-    #region 【Static Class : MessageDigestTests】
+    #region 【Class : MessageDigestTests】
     /// <summary>
     /// MessageDigestクラスのテスト
     /// </summary>
