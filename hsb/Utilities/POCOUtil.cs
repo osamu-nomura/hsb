@@ -68,11 +68,10 @@ namespace hsb.Utilities
             /// <summary>
             /// コンストラクタ
             /// </summary>
-            /// <param name="containerType">コンテナ型情報</param>
             /// <param name="name">名称</param>
             /// <param name="valueType">値型情報</param>
             /// <param name="value">値</param>
-            public ValueData(Type containerType, string name, Type valueType, object value)
+            public ValueData(string name, Type valueType, object value)
             {
                 Name = name;
                 KeyType = null;
@@ -132,17 +131,17 @@ namespace hsb.Utilities
             var objectType = o.GetType();
             if (objectType.IsValueType || objectType.IsArray || objectType.IsList() || objectType.IsDictionary())
             {
-                yield return new ValueData(null, null, objectType, o);
+                yield return new ValueData(null, objectType, o);
             }
             else
             {
                 foreach (var field in objectType.GetFields())
                 {
-                    yield return new ValueData(objectType, field.Name, field.FieldType, field.GetValue(o));
+                    yield return new ValueData(field.Name, field.FieldType, field.GetValue(o));
                 }
                 foreach (var prop in objectType.GetProperties())
                 {
-                    yield return new ValueData(objectType, prop.Name, prop.PropertyType, prop.GetValue(o));
+                    yield return new ValueData(prop.Name, prop.PropertyType, prop.GetValue(o));
                 }
             }
         }
