@@ -164,6 +164,7 @@ namespace hsb.Extensions
         /// <param name="num">this 値</param>
         /// <returns>整数値</returns>
         public static double Ceiling(this double num) => Math.Ceiling(num);
+        public static double Ceiling(this float num) => Math.Ceiling(num);
         #endregion
 
         #region - Floor : 最大の整数値を返す
@@ -173,6 +174,7 @@ namespace hsb.Extensions
         /// <param name="num">this 値</param>
         /// <returns>整数値</returns>
         public static double Floor(this double num) => Math.Floor(num);
+        public static double Floor(this float num) => Math.Floor(num);
         #endregion
 
         #region - Round : 指定した小数点の桁数に丸める
@@ -183,6 +185,7 @@ namespace hsb.Extensions
         /// <param name="decimals">桁数</param>
         /// <returns>丸めた数値</returns>
         public static double Round(this double num, int decimals = 0) => Math.Round(num, decimals);
+        public static double Round(this float num, int decimals = 0) => Math.Round(num, decimals);
         #endregion
 
         #region - Digits : 整数値を桁毎に列挙する
