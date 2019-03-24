@@ -93,6 +93,58 @@ namespace hsb.Extensions.Tests
             Assert.AreEqual("1.6M", 1677721.6M.ToHumanReadable());
         }
         #endregion
+
+        #region - CeilingTest
+        /// <summary>
+        /// Test of Ceiling
+        /// </summary>
+        [TestMethod()]
+        public void CeilingTest()
+        {
+            Assert.AreEqual(2.0d, 1.5d.Ceiling());
+            Assert.AreEqual(-1.0d, (-1.5d).Ceiling());
+        }
+        #endregion
+
+        #region -FloorTest
+        /// <summary>
+        /// Test of Floor
+        /// </summary>
+        [TestMethod()]
+        public void FloorTest()
+        {
+            Assert.AreEqual(1.0d, 1.5d.Floor());
+            Assert.AreEqual(-2.0d, (-1.5d).Floor());
+        }
+        #endregion
+
+        #region - Round
+        /// <summary>
+        /// Test of Round
+        /// </summary>
+        [TestMethod()]
+        public void RoundTest()
+        {
+            Assert.AreEqual(2.0d, 1.51d.Round());
+            Assert.AreEqual(1.5d, 1.51d.Round(1));
+            Assert.AreEqual(1.0d, 1.49d.Round());
+            Assert.AreEqual(1.5d, 1.49d.Round(1));
+        }
+        #endregion
+
+        #region - DigitsTest
+        /// <summary>
+        /// Test of Digits
+        /// </summary>
+        [TestMethod()]
+        public void DigitsTest()
+        {
+            var ar = 12345.Digits().ToArray();
+            Assert.IsTrue(new int[] { 1, 2, 3, 4, 5 }.SequenceEqual(ar));
+            var ar2 = (-12345).Digits().ToArray();
+            Assert.IsTrue(new int[] { 1, 2, 3, 4, 5 }.SequenceEqual(ar2));
+        }
+        #endregion
     }
     #endregion
 }

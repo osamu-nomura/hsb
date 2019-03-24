@@ -19,9 +19,9 @@ namespace hsb.Extensions
         /// </summary>
         /// <param name="num">this 値</param>
         /// <returns>True : 偶数 / False : 奇数</returns>
-        public static bool IsEven(this Int16 num) => num % 2 == 0;
-        public static bool IsEven(this Int32 num) => num % 2 == 0;
-        public static bool IsEven(this Int64 num) => num % 2 == 0;
+        public static bool IsEven(this short num) => num % 2 == 0;
+        public static bool IsEven(this int num) => num % 2 == 0;
+        public static bool IsEven(this long num) => num % 2 == 0;
         public static bool IsEven(this decimal num) => num % 2 == 0;
         #endregion
 
@@ -31,9 +31,9 @@ namespace hsb.Extensions
         /// </summary>
         /// <param name="num">this 値</param>
         /// <returns>True : 奇数 / False : 偶数</returns>
-        public static bool IsOdd(this Int16 num) => num % 2 != 0;
-        public static bool IsOdd(this Int32 num) => num % 2 != 0;
-        public static bool IsOdd(this Int64 num) => num % 2 != 0;
+        public static bool IsOdd(this short num) => num % 2 != 0;
+        public static bool IsOdd(this int num) => num % 2 != 0;
+        public static bool IsOdd(this long num) => num % 2 != 0;
         public static bool IsOdd(this decimal num) => num % 2 != 0;
         #endregion
 
@@ -155,6 +155,48 @@ namespace hsb.Extensions
         public static double DegreeToRadian(this double num) => num * (Math.PI / 180.0d);
         public static double DegreeToRadian(this float num) => num * (Math.PI / 180.0d);
         public static decimal DegreeToRadian(this decimal num) => num * ((decimal)Math.PI / 180.0m);
+        #endregion
+
+        #region - Ceiling : 最小の整数値を返す
+        /// <summary>
+        /// 最小の整数値を返す
+        /// </summary>
+        /// <param name="num">this 値</param>
+        /// <returns>整数値</returns>
+        public static double Ceiling(this double num) => Math.Ceiling(num);
+        #endregion
+
+        #region - Floor : 最大の整数値を返す
+        /// <summary>
+        /// 最大の整数値を返す
+        /// </summary>
+        /// <param name="num">this 値</param>
+        /// <returns>整数値</returns>
+        public static double Floor(this double num) => Math.Floor(num);
+        #endregion
+
+        #region - Round : 指定した小数点の桁数に丸める
+        /// <summary>
+        /// 指定した小数点の桁数に丸める
+        /// </summary>
+        /// <param name="num">this 値</param>
+        /// <param name="decimals">桁数</param>
+        /// <returns>丸めた数値</returns>
+        public static double Round(this double num, int decimals = 0) => Math.Round(num, decimals);
+        #endregion
+
+        #region - Digits : 整数値を桁毎に列挙する
+        /// <summary>
+        /// 整数値を桁毎に列挙する
+        /// </summary>
+        /// <param name="n">this n 値</param>
+        /// <returns>IEnumerable</returns>
+        public static IEnumerable<int> Digits(this short n)
+            => Math.Abs(n).ToString().Select(c => c - '0');
+        public static IEnumerable<int> Digits(this int n)
+            => Math.Abs(n).ToString().Select(c => c - '0');
+        public static IEnumerable<int> Digits(this long n)
+            => Math.Abs(n).ToString().Select(c => c - '0');
         #endregion
     }
     #endregion
