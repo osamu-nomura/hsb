@@ -12,6 +12,13 @@ namespace hsb.Utilities
     #region 【Static Class : POCOUtil】
     public static class POCOUtil
     {
+        #region 【Enum】
+        /// <summary>
+        /// データ種別
+        /// </summary>
+        public enum DataType { Scalar, List, Dictionary }
+        #endregion
+
         #region 【Inner Class : ValueData】
         /// <summary>
         /// 値データクラス
@@ -48,11 +55,11 @@ namespace hsb.Utilities
             public bool IsNullable { get; set; }
             #endregion
 
-            #region - IsCollection : コレクション型?
+            #region - DataType : データ種別
             /// <summary>
-            /// コレクション型?
+            /// データ種別
             /// </summary>
-            public bool IsCollection { get; set; }
+            public DataType DataType { get; set; }
             #endregion
 
             #region - Value : 値
@@ -77,7 +84,7 @@ namespace hsb.Utilities
                 KeyType = null;
                 ValueType = valueType;
                 IsNullable = false;
-                IsCollection = false;
+                DataType = DataType.Scalar;
                 Value = value;
 
                 if (valueType.IsValueType)
@@ -93,22 +100,28 @@ namespace hsb.Utilities
                     if (valueType.IsArray || valueType.IsList())
                     {
                         ValueType = (valueType.IsArray) ? valueType.GetElementType() : valueType.GetGenericArguments()[0];
-                        IsCollection = true;
+                        DataType = DataType.List;
                         var values = new List<object>();
-                        foreach (var obj in value as IEnumerable)
+                        if (value != null && value is IEnumerable)
                         {
-                            values.Add(obj);
+                            foreach (var obj in value as IEnumerable)
+                            {
+                                values.Add(obj);
+                            }
                         }
                         Value = values;
                     }
                     else if (valueType.IsDictionary())
                     {
                         ValueType = valueType.GetGenericArguments()[0];
-                        IsCollection = true;
-                        var values = new List<object>();
-                        foreach (var key in (value as IDictionary).Keys)
+                        DataType = DataType.Dictionary;
+                        var values = new Dictionary<object, object>();
+                        if (value != null && value is IDictionary)
                         {
-                            values.Add(new KeyValuePair<object,object>(key, (value as IDictionary)[key]));
+                            foreach (KeyValuePair<object, object> kv in (value as IDictionary))
+                            {
+                                values.Add(kv.Key, kv.Value);
+                            }
                         }
                         Value = values;
                     }
@@ -146,6 +159,49 @@ namespace hsb.Utilities
             }
         }
         #endregion
+
+        public static Dictionary<string, ValueData> ToDictionary(object o)
+        {
+            var result = new Dictionary<string, ValueData>();
+
+            var objectType = o.GetType();
+            if (objectType.IsValueType || objectType.IsArray || objectType.IsList() || objectType.IsDictionary())
+            {
+                result.Add("", new ValueData(null, objectType, o));
+            }
+            else
+            {
+                foreach (var field in objectType.GetFields())
+                {
+                    result.Add(field.Name, new ValueData(field.Name, field.FieldType, field.GetValue(o)));
+                }
+                foreach (var prop in objectType.GetProperties())
+                {
+                    var value = new ValueData(prop.Name, prop.PropertyType, prop.GetValue(o));
+                    if (value.DataType == DataType.List)
+                    {
+                        var values = new List<object>();
+                        if (value.Value != null && value.Value is IEnumerable)
+                        {
+                            foreach (var obj in value.Value as IEnumerable)
+                            {
+                                if (obj != null)
+                                    values.Add(ToDictionary(obj));
+                                else
+                                    values.Add(null);
+                            }
+                        }
+                        value.Value = values;
+                    }
+                    else if (value.ValueType.IsClass && value.ValueType != typeof(string) && value.Value != null)
+                    {
+                        value.Value = ToDictionary(value.Value);
+                    }
+                    result.Add(prop.Name, value);
+                }
+            }
+            return result;
+        }
 
         #endregion
     }
