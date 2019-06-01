@@ -31,7 +31,7 @@ namespace hsb.Classes.Tests
             d.Add("a", 0);
             d.Add("b", 0);
             d.Add("c", 0);
-            Enumerable.Range(0, 1000).ForEach(n =>
+            Enumerable.Range(0, 100000).ForEach(n =>
             {
                 var s = p.Next();
                 d[s] += 1;

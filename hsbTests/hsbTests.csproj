@@ -79,7 +79,6 @@
     <Compile Include="Utilities\EtcUtilTests.cs" />
     <Compile Include="Utilities\KanjiNumeralUtilTests.cs" />
     <Compile Include="Utilities\MessageDigestTests.cs" />
-    <Compile Include="Utilities\POCOUtilTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hsb\hsb.csproj">
