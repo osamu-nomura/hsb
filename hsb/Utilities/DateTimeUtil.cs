@@ -107,16 +107,9 @@ namespace hsb.Utilities
         /// <param name="millisecond">mm秒</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second, millisecond);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+           => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second, millisecond),
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(2)
@@ -133,16 +126,9 @@ namespace hsb.Utilities
         /// <param name="kind">種別</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond, DateTimeKind kind)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second, millisecond, kind);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+           => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second, millisecond, kind),
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(3)
@@ -159,16 +145,9 @@ namespace hsb.Utilities
         /// <param name="calendar">カレンダー</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second, millisecond, calendar);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+           => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second, millisecond, calendar),
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(4)
@@ -186,16 +165,9 @@ namespace hsb.Utilities
         /// <param name="kind">種別</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar, DateTimeKind kind)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second, millisecond, calendar, kind);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+            => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second, millisecond, calendar, kind),
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(5)
@@ -210,16 +182,9 @@ namespace hsb.Utilities
         /// <param name="second">秒</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+            => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second),
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(6)
@@ -235,16 +200,9 @@ namespace hsb.Utilities
         /// <param name="kind">種別</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, DateTimeKind kind)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second, kind);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+            => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second, kind),
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(7)
@@ -260,16 +218,9 @@ namespace hsb.Utilities
         /// <param name="calendar">カレンダー</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, int hour, int minute, int second, Calendar calendar)
-        {
-            try
-            {
-                return new DateTime(year, month, day, hour, minute, second, calendar);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+            => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, hour, minute, second, calendar), 
+                (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(8)
@@ -281,16 +232,8 @@ namespace hsb.Utilities
         /// <param name="day">日</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day)
-        {
-            try
-            {
-                return new DateTime(year, month, day);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+            => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day), (DateTime?)null).Value;
         #endregion
 
         #region - Create : DateTimeを生成する(9)
@@ -303,16 +246,8 @@ namespace hsb.Utilities
         /// <param name="calendar">カレンダー</param>
         /// <returns>DateTime?</returns>
         public static DateTime? Create(int year, int month, int day, Calendar calendar)
-        {
-            try
-            {
-                return new DateTime(year, month, day, calendar);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+            => EtcUtil.SafeExecute(
+                () => (DateTime?)new DateTime(year, month, day, calendar), (DateTime?)null).Value;
         #endregion
 
         #region - String2DayOfWeek : 曜日を示す文字列からDayOfWeekを返す

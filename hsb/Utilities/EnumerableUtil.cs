@@ -22,9 +22,7 @@ namespace hsb.Utilities
         /// <param name="parameters">引数（可変）</param>
         /// <returns>列挙子</returns>
         public static IEnumerable<T> Enumerator<T>(params T[] parameters)
-        {
-            return parameters;
-        }
+            => parameters;
         #endregion
 
         #region - Repeat : 指定した関数を指定回数実行し結果を列挙する
@@ -36,9 +34,7 @@ namespace hsb.Utilities
         /// <param name="count">回数</param>
         /// <returns>列挙子</returns>
         public static IEnumerable<T> Repeat<T>(Func<int, T> func, int count)
-        {
-            return Enumerable.Range(0, count).Select(n => func(n));
-        }
+            => Enumerable.Range(0, count).Select(n => func(n));
         #endregion
 
         #endregion

@@ -20,10 +20,7 @@ namespace hsb.Utilities
         /// </summary>
         /// <param name="args">引数リスト</param>
         /// <returns>True : すべての引数が真である / False : 引数リストに偽が存在する</returns>
-        public static bool All(params bool[] args)
-        {
-            return !args.Any(c => !c);
-        }
+        public static bool All(params bool[] args) => !args.Any(c => !c);
         #endregion
 
         #region - Nothing : すべての引数が偽である
@@ -32,10 +29,7 @@ namespace hsb.Utilities
         /// </summary>
         /// <param name="args">引数リスト</param>
         /// <returns>True : すべての引数が偽である / False : 引数リストに真が存在する</returns>
-        public static bool Nothing(params bool[] args)
-        {
-            return !args.Any(c => c);
-        }
+        public static bool Nothing(params bool[] args) => !args.Any(c => c);
         #endregion
 
         #region - Any : 引数の中の一つ以上の真が存在する
@@ -44,10 +38,7 @@ namespace hsb.Utilities
         /// </summary>
         /// <param name="args">引数リスト</param>
         /// <returns>True : 引数リストに真が存在する / False : 引数リストに真が存在しない</returns>
-        public static bool Any(params bool[] args)
-        {
-            return args.Any(c => c);
-        }
+        public static bool Any(params bool[] args) => args.Any(c => c);
         #endregion
 
         #region - AllNull : すべての引数がNULLである
@@ -57,10 +48,7 @@ namespace hsb.Utilities
         /// <typeparam name="T">型パラメータ</typeparam>
         /// <param name="args">引数リスト</param>
         /// <returns>True : すべての引数がNULLである / False : 引数リストに非NULLが存在する</returns>
-        public static bool AllNull<T>(params T[] args)
-        {
-            return !args.Any(c => c != null);
-        }
+        public static bool AllNull<T>(params T[] args) => !args.Any(c => c != null);
         #endregion
 
         #region - NothingNull : すべての引数が非NULLである
@@ -69,10 +57,7 @@ namespace hsb.Utilities
         /// </summary>
         /// <param name="args">引数リスト</param>
         /// <returns>True : すべての引数が非NULLである / False : 引数リストにNULLが存在する</returns>
-        public static bool NothingNull<T>(params T[] args)
-        {
-            return !args.Any(c => c == null);
-        }
+        public static bool NothingNull<T>(params T[] args) => !args.Any(c => c == null);
         #endregion
 
         #region - AnyNull : 引数の中の一つ以上のNULLが存在する
@@ -81,10 +66,7 @@ namespace hsb.Utilities
         /// </summary>
         /// <param name="args">引数リスト</param>
         /// <returns>True : 引数リストにNULLが存在する / False : 引数リストにNULLが存在しない</returns>
-        public static bool AnyNull<T>(params T[] args)
-        {
-            return args.Any(c => c == null);
-        }
+        public static bool AnyNull<T>(params T[] args) => args.Any(c => c == null);
         #endregion
 
         #endregion
