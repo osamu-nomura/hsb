@@ -22,9 +22,7 @@ namespace hsb.Extensions
         /// <param name="list">this リスト</param>
         /// <param name="items">要素（可変）</param>
         public static void Add<T>(this List<T> list, params T[] items)
-        {
-            list.AddRange(items);
-        }
+            =>  list.AddRange(items);
         #endregion
 
         #region - AddWithoutNull : 要素がNULLでなければリストに追加する

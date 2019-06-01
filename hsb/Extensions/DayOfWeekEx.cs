@@ -31,9 +31,7 @@ namespace hsb.Extensions
         /// <param name="provider">フォーマットプロバイダー</param>
         /// <returns>曜日を示す長い文字列</returns>
         public static string ToFullString(this DayOfWeek dow, IFormatProvider provider = null)
-        {
-            return _sunday.AddDays((int)dow).ToString("dddd", provider ?? Thread.CurrentThread.CurrentUICulture);
-        }
+            => _sunday.AddDays((int)dow).ToString("dddd", provider ?? Thread.CurrentThread.CurrentUICulture);
         #endregion
 
         #region - ToShortString : 短い文字列化
@@ -44,9 +42,7 @@ namespace hsb.Extensions
         /// <param name="provider">フォーマットプロバイダー</param>
         /// <returns>曜日を示す短い文字列</returns>
         public static string ToShortString(this DayOfWeek dow, IFormatProvider provider = null)
-        {
-            return _sunday.AddDays((int)dow).ToString("ddd", provider ?? Thread.CurrentThread.CurrentUICulture);
-        }
+            => _sunday.AddDays((int)dow).ToString("ddd", provider ?? Thread.CurrentThread.CurrentUICulture);
         #endregion
 
         #endregion

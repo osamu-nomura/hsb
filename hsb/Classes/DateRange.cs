@@ -186,12 +186,7 @@ namespace hsb.Classes
         /// <param name="dt">検査日</param>
         /// <returns>True : 範囲内 / False : 範囲外</returns>
         public bool InRange(DateTime dt)
-        {
-            if (!IsEmpty)
-                return (RangeFrom ?? DateTime.MinValue) <= dt && dt <= (RangeTo ?? DateTime.MaxValue);
-            else
-                return false;
-        }
+            => (!IsEmpty) && (RangeFrom ?? DateTime.MinValue) <= dt && dt <= (RangeTo ?? DateTime.MaxValue);
         #endregion
 
         #region - OutOfRange : 指定した日時が範囲外
@@ -200,10 +195,8 @@ namespace hsb.Classes
         /// </summary>
         /// <param name="dt">DateTime : 検査日</param>
         /// <returns>True : 範囲外 / False : 範囲内</returns>
-        public bool OutOfRange(DateTime dt)
-        {
-            return !InRange(dt);
-        }
+        public bool OutOfRange(DateTime dt) 
+            => !InRange(dt);
         #endregion
 
         #region - ToString : 文字列化

@@ -24,13 +24,8 @@ namespace hsb.Extensions
         /// <param name="key">キー</param>
         /// <param name="defaultValue">デフォルト値</param>
         /// <returns>辞書の値</returns>
-        public static T2 Get<T1,T2>(this Dictionary<T1,T2> dict, T1 key, T2 defaultValue)
-        {
-            if (dict.ContainsKey(key))
-                return dict[key];
-            else
-                return defaultValue;
-        }
+        public static T2 Get<T1, T2>(this Dictionary<T1, T2> dict, T1 key, T2 defaultValue)
+            => (dict.ContainsKey(key)) ? dict[key] : defaultValue;
         #endregion
 
         #region - Get : 辞書より値を取得する(2)
@@ -44,12 +39,7 @@ namespace hsb.Extensions
         /// <param name="generator">キーが存在しない場合に呼ばれるコールバック</param>
         /// <returns>辞書の値</returns>
         public static T2 Get<T1, T2>(this Dictionary<T1, T2> dict, T1 key, Func<T2> generator)
-        {
-            if (dict.ContainsKey(key))
-                return dict[key];
-            else
-                return generator();
-        }
+            => (dict.ContainsKey(key)) ? dict[key] : generator();
         #endregion
 
         #region - GetOrAdd : キーが存在すれば値を返し、存在しなければ追加して返す

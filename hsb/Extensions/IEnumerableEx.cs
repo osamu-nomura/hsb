@@ -40,9 +40,7 @@ namespace hsb.Extensions
         /// <param name="collection">IEnumerable</param>
         /// <returns>IEnumerable</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection)
-        {
-            return collection.OrderBy(i => Guid.NewGuid());
-        }
+            => collection.OrderBy(i => Guid.NewGuid());
         #endregion
 
         #region - ForEach : IEnumerable版 ForEach

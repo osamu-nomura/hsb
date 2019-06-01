@@ -48,9 +48,7 @@ namespace hsb.Utilities
         /// <param name="enc">エンコーディング</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(HashAlgorithm ha, string s, Encoding enc = null)
-        {
-            return CreateDigest(ha, (enc ?? Encoding.UTF8).GetBytes(s));
-        }
+            => CreateDigest(ha, (enc ?? Encoding.UTF8).GetBytes(s));
         #endregion
 
         #region - CreateDigestFromFile : ファイルのダイジェスト値を取得する
@@ -83,9 +81,7 @@ namespace hsb.Utilities
         /// <param name="data">バイト配列</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(byte[] data)
-        {
-            return MessageDigest.CreateDigest(new MD5CryptoServiceProvider(), data);
-        }
+            => MessageDigest.CreateDigest(new MD5CryptoServiceProvider(), data);
         #endregion
 
         #region - CreateDigest : 文字列のMD5ダイジェスト値を取得する
@@ -96,9 +92,7 @@ namespace hsb.Utilities
         /// <param name="enc">エンコーディング</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(string s, Encoding enc = null)
-        {
-            return MessageDigest.CreateDigest(new MD5CryptoServiceProvider(), s, enc);
-        }
+            => MessageDigest.CreateDigest(new MD5CryptoServiceProvider(), s, enc);
         #endregion
 
         #region - CreateDigestFromFile : ファイルのMD5ダイジェスト値を取得する
@@ -108,9 +102,7 @@ namespace hsb.Utilities
         /// <param name="path">ダイジェスト値を取得するファイルのPATH</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigestFromFile(string path)
-        {
-            return MessageDigest.CreateDigestFromFile(new MD5CryptoServiceProvider(), path);
-        }
+            => MessageDigest.CreateDigestFromFile(new MD5CryptoServiceProvider(), path);
         #endregion
     }
     #endregion
@@ -128,9 +120,7 @@ namespace hsb.Utilities
         /// <param name="data">バイト配列</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(byte[] data)
-        {
-            return MessageDigest.CreateDigest(new SHA1CryptoServiceProvider(), data);
-        }
+            => MessageDigest.CreateDigest(new SHA1CryptoServiceProvider(), data);
         #endregion
 
         #region - CreateDigest : 文字列のSHA1ダイジェスト値を取得する
@@ -141,9 +131,7 @@ namespace hsb.Utilities
         /// <param name="enc">エンコーディング</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(string s, Encoding enc = null)
-        {
-            return MessageDigest.CreateDigest(new SHA1CryptoServiceProvider(), s, enc);
-        }
+            => MessageDigest.CreateDigest(new SHA1CryptoServiceProvider(), s, enc);
         #endregion
 
         #region - CreateDigestFromFile : ファイルのSHA1ダイジェスト値を取得する
@@ -153,9 +141,7 @@ namespace hsb.Utilities
         /// <param name="path">ダイジェスト値を取得するファイルのPATH</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigestFromFile(string path)
-        {
-            return MessageDigest.CreateDigestFromFile(new SHA1CryptoServiceProvider(), path);
-        }
+            => MessageDigest.CreateDigestFromFile(new SHA1CryptoServiceProvider(), path);
         #endregion
     }
     #endregion
@@ -173,9 +159,7 @@ namespace hsb.Utilities
         /// <param name="data">バイト配列</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(byte[] data)
-        {
-            return MessageDigest.CreateDigest(new SHA256CryptoServiceProvider(), data);
-        }
+            => MessageDigest.CreateDigest(new SHA256CryptoServiceProvider(), data);
         #endregion
 
         #region - CreateDigest : 文字列のSHA256ダイジェスト値を取得する
@@ -186,9 +170,7 @@ namespace hsb.Utilities
         /// <param name="enc">エンコーディング</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigest(string s, Encoding enc = null)
-        {
-            return MessageDigest.CreateDigest(new SHA256CryptoServiceProvider(), s, enc);
-        }
+            => MessageDigest.CreateDigest(new SHA256CryptoServiceProvider(), s, enc);
         #endregion
 
         #region - CreateDigestFromFile : ファイルのSHA1ダイジェスト値を取得する
@@ -198,9 +180,7 @@ namespace hsb.Utilities
         /// <param name="path">ダイジェスト値を取得するファイルのPATH</param>
         /// <returns>ダイジェスト値</returns>
         public static string CreateDigestFromFile(string path)
-        {
-            return MessageDigest.CreateDigestFromFile(new SHA256CryptoServiceProvider(), path);
-        }
+            => MessageDigest.CreateDigestFromFile(new SHA256CryptoServiceProvider(), path);
         #endregion
     }
     #endregion
