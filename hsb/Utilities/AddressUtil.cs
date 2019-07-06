@@ -134,10 +134,7 @@ namespace hsb.Utilities
         /// <returns>正規化された住所</returns>
         public static NormalizeAddress Normalize(string addr)
         {
-            var prefecture = "";
-            var city = "";
-            var address = "";
-            var building = "";
+            string prefecture, city, address, building;
 
             addr = addr.ToZenkakuKatakana().ToHankakuAlphaNum();
 

@@ -173,22 +173,22 @@ namespace hsb.Utilities
                     switch (c)
                     {
                         case '+':
-                            tokens.Enqueue(new Token<T>(TokenType.Add, default(T)));
+                            tokens.Enqueue(new Token<T>(TokenType.Add, default));
                             break;
                         case '-':
-                            tokens.Enqueue(new Token<T>(TokenType.Sub, default(T)));
+                            tokens.Enqueue(new Token<T>(TokenType.Sub, default));
                             break;
                         case '*':
-                            tokens.Enqueue(new Token<T>(TokenType.Mul, default(T)));
+                            tokens.Enqueue(new Token<T>(TokenType.Mul, default));
                             break;
                         case '/':
-                            tokens.Enqueue(new Token<T>(TokenType.Div, default(T)));
+                            tokens.Enqueue(new Token<T>(TokenType.Div, default));
                             break;
                         case '(':
-                            tokens.Enqueue(new Token<T>(TokenType.LParen, default(T)));
+                            tokens.Enqueue(new Token<T>(TokenType.LParen, default));
                             break;
                         case ')':
-                            tokens.Enqueue(new Token<T>(TokenType.RParen, default(T)));
+                            tokens.Enqueue(new Token<T>(TokenType.RParen, default));
                             break;
 ;                        default:
                             if (IsNum(c))
@@ -277,7 +277,7 @@ namespace hsb.Utilities
                     return (T)(object)((double)(object)n1 + (double)(object)n2);
                 if (typeof(T) == typeof(decimal))
                     return (T)(object)((decimal)(object)n1 + (decimal)(object)n2);
-                return default(T);
+                return default;
             }
             #endregion
 
@@ -296,7 +296,7 @@ namespace hsb.Utilities
                     return (T)(object)((double)(object)n1 - (double)(object)n2);
                 if (typeof(T) == typeof(decimal))
                     return (T)(object)((decimal)(object)n1 - (decimal)(object)n2);
-                return default(T);
+                return default;
             }
             #endregion
 
@@ -315,7 +315,7 @@ namespace hsb.Utilities
                     return (T)(object)((double)(object)n1 * (double)(object)n2);
                 if (typeof(T) == typeof(decimal))
                     return (T)(object)((decimal)(object)n1 * (decimal)(object)n2);
-                return default(T);
+                return default;
             }
             #endregion
 
@@ -334,7 +334,7 @@ namespace hsb.Utilities
                     return (T)(object)((double)(object)n1 / (double)(object)n2);
                 if (typeof(T) == typeof(decimal))
                     return (T)(object)((decimal)(object)n1 / (decimal)(object)n2);
-                return default(T);
+                return default;
             }
             #endregion
 
@@ -405,8 +405,8 @@ namespace hsb.Utilities
                 if (Token.TokenType == TokenType.Value)
                     return Token.Value;
 
-                var leftValue = (Left != null) ? Left.Eval() : default(T);
-                var rightValue = (Right != null) ? Right.Eval() : default(T);
+                var leftValue = (Left != null) ? Left.Eval() : default;
+                var rightValue = (Right != null) ? Right.Eval() : default;
                 switch (Token.TokenType)
                 {
                     case TokenType.Add:
@@ -418,7 +418,7 @@ namespace hsb.Utilities
                     case TokenType.Div:
                         return Div(leftValue, rightValue);
                 }
-                return default(T);
+                return default;
             }
             #endregion
 
@@ -472,7 +472,7 @@ namespace hsb.Utilities
                 Tokens = Token<T>.Parse(s);
 
                 // 末尾に番兵として右括弧を追加
-                Tokens.Enqueue(new Token<T>(TokenType.RParen, default(T)));
+                Tokens.Enqueue(new Token<T>(TokenType.RParen, default));
                 // 計算木を組み立てる
                 ExpressionTree = BuildExpression();
             }
@@ -557,7 +557,7 @@ namespace hsb.Utilities
             {
                 if (ExpressionTree != null)
                     return ExpressionTree.Eval(); ;
-                return default(T);
+                return default;
             }
             #endregion
         }

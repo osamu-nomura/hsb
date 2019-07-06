@@ -59,7 +59,7 @@ namespace hsb.Classes
             else
             {
                 var o = obj as ValueWithName<T>;
-                if ((object)o != null)
+                if (!(o is null))
                     return Value.Equals(o.Value);
                 else
                     return Value.Equals(obj);
@@ -75,7 +75,7 @@ namespace hsb.Classes
         /// <returns>True : 一致 / False : 不一致</returns>
         public bool Equals(ValueWithName<T> val)
         {
-            if ((object)val != null)
+            if (!(val is null))
                 return Value.Equals(val.Value);
             else
                 return false;
@@ -134,7 +134,7 @@ namespace hsb.Classes
         {
             if (ReferenceEquals(v1, v2))
                 return true;
-            return ((object)v1 != null && (object)v2 != null) ? v1.Value.Equals(v2.Value) : false;
+            return (!(v1 is null) && !(v2 is null)) ? v1.Value.Equals(v2.Value) : false;
         }
         #endregion
 
@@ -147,7 +147,7 @@ namespace hsb.Classes
         /// <returns>TRUE:等しい / FALSE:等しくない</returns>
         public static bool operator ==(ValueWithName<T> val, T rawVal)
         {
-            if ((object)val == null)
+            if (val is null)
                 return rawVal == null;
             else
                 return val.Value.Equals(rawVal);

@@ -118,10 +118,12 @@ namespace hsb.Utilities
             if (param == null)
                 throw new ArgumentNullException();
 
-            var sc = new SmtpClient();
-            sc.Host = param.Host;
-            sc.Port = param.Port;
-            sc.DeliveryMethod = SmtpDeliveryMethod.Network;
+            var sc = new SmtpClient
+            {
+                Host = param.Host,
+                Port = param.Port,
+                DeliveryMethod = SmtpDeliveryMethod.Network
+            };
             if (!string.IsNullOrEmpty(param.User))
                 sc.Credentials = new NetworkCredential(param.User, param.Password);
             sc.EnableSsl = param.EnableSsl;

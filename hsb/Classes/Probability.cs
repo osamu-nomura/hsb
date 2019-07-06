@@ -16,7 +16,7 @@ namespace hsb.Classes
         /// <summary>
         /// 乱数発生器
         /// </summary>
-        private Random _r = new Random();
+        private readonly Random _r = new Random();
         #endregion
 
         #endregion
@@ -73,11 +73,11 @@ namespace hsb.Classes
         public T Next()
         {
             var n = _r.Next(Sum);
-            foreach(var t in Probabilities)
+            foreach(var (item, ratio) in Probabilities)
             {
-                if (n < t.ratio)
-                    return t.item;
-                n -= t.ratio;
+                if (n < ratio)
+                    return item;
+                n -= ratio;
             }
             return Probabilities.FirstOrDefault().item;
         }

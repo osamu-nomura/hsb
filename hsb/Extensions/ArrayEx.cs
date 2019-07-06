@@ -26,11 +26,11 @@ namespace hsb.Extensions
             /// <summary>
             /// 2次元配列
             /// </summary>
-            private T[,] _array;
+            private readonly T[,] _array;
             /// <summary>
             /// 列インデックス
             /// </summary>
-            private int _colIndex;
+            private readonly int _colIndex;
             #endregion
 
             #region ■ Properties
@@ -110,11 +110,11 @@ namespace hsb.Extensions
             /// <summary>
             /// 2次元配列
             /// </summary>
-            private T[,] _array;
+            private readonly T[,] _array;
             /// <summary>
             /// 行インデックス
             /// </summary>
-            private int _rowIndex;
+            private readonly int _rowIndex;
             #endregion
 
             #region ■ Properties

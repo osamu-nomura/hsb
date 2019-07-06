@@ -23,8 +23,7 @@ namespace hsb.Utilities
         /// <returns>ValueWithName型のリスト</returns>
         public static List<ValueWithName<T>> GetEnumList<T>() where T : IComparable
         {
-            var it = Enum.GetValues(typeof(T)) as IEnumerable<T>;
-            if (it != null)
+            if (Enum.GetValues(typeof(T)) is IEnumerable<T> it)
                 return it.Select(v => new ValueWithName<T>(v, GetEnumFieldDisplayName<T>(v))).ToList();
             return null;
         }
